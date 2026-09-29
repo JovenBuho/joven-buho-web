@@ -7,8 +7,8 @@ a{color:inherit;text-decoration:none}
 /* Nav estilo referencia: línea vertical roja a la derecha */
 header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{max-width:1200px;margin:auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:relative}
-.logo{font-weight:800;letter-spacing:.18em;font-size:1.1rem;text-transform:uppercase}
-.logo span{color:var(--red);text-shadow:0 0 10px rgba(225,11,31,.7)}
+.logo{font-weight:800;letter-spacing:.18em;font-size:1.1rem;text-transform:uppercase;text-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55),0 0 34px rgba(255,255,255,.3)}
+.logo span{color:var(--red);text-shadow:0 0 8px rgba(225,11,31,.85),0 0 18px rgba(225,11,31,.55),0 0 34px rgba(225,11,31,.3)}
 .navlinks{display:flex;gap:32px;font-size:.85rem;color:var(--mut);letter-spacing:.03em}
 .navlinks a:hover{color:var(--txt)}
 .navline{position:absolute;right:0;top:0;bottom:0;width:2px;background:var(--red)}
@@ -17,7 +17,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .hero{max-width:1200px;margin:auto;padding:70px 24px 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
 .hero .hi{color:var(--red);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.85rem;margin-bottom:10px;display:block;text-shadow:0 0 10px rgba(225,11,31,.7)}
 .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.12}
-.hero h1 .accent{color:var(--red);text-shadow:0 0 14px rgba(225,11,31,.7)}
+.hero h1 .accent{color:var(--red);text-shadow:0 0 8px rgba(225,11,31,.85),0 0 18px rgba(225,11,31,.55),0 0 34px rgba(225,11,31,.3)}
 .hero h1 .white-neon{text-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55),0 0 34px rgba(255,255,255,.3)}
 
 .hero>div{animation:heroIn .9s cubic-bezier(.16,1,.3,1) both}
