@@ -50,8 +50,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 
   dotsBox.innerHTML=screens.map((_,n)=>`<button aria-label="Ir a sección ${n+1}"></button>`).join("");
   const dots=[...dotsBox.querySelectorAll("button")];
-  let idx=screens.findIndex(s=>s.classList.contains("active"));
-  if(idx<0) idx=0;
+  let idx=0;
 
   function show(n){
     idx=Math.max(0,Math.min(screens.length-1,n));
@@ -66,12 +65,8 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     if(e.key==="ArrowUp"||e.key==="ArrowLeft") show(idx-1);
   });
 
-  const hash=location.hash.slice(1);
-  if(hash){
-    const target=screens.findIndex(s=>s.querySelector("#"+CSS.escape(hash)));
-    if(target>=0) idx=target;
-  }
-  show(idx);
+  if(location.hash) history.replaceState(null,"",location.pathname);
+  show(0);
 })();
 
 function embed(url){
