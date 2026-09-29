@@ -67,6 +67,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 
   if(location.hash) history.replaceState(null,"",location.pathname);
   show(0);
+  window.addEventListener("pageshow",e=>{ if(e.persisted) show(0); });
 })();
 
 function embed(url){
