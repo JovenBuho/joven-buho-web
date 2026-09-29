@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storytelling — Joven Búho</title>
+<meta name="description" content="Storytelling: historias con inicio, desarrollo y cierre, apoyadas en música y efectos que las hacen fáciles de seguir.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header><div class="nav">
+  <a class="logo" href="index.html">JOVEN <span>BÚHO</span></a>
+  <nav class="navlinks">
+    <a href="trabajos.html">Trabajos</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <div class="navline"></div>
+</div></header>
+
+<div class="page-hero reveal">
+  <h1><span class="white-neon">Story</span><span class="accent">telling</span></h1>
+  <p>Historias con inicio, desarrollo y cierre, apoyadas en música y efectos que las hacen fáciles de seguir. Para cuando el video necesita contar algo, no solo mostrarlo.</p>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<section class="contact reveal">
+  <h2>¿Tienes una historia que contar?</h2>
+  <p style="color:var(--mut)">Cuéntamela por WhatsApp y vemos cómo darle forma.</p>
+  <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</section>
+
+<footer>© <span id="y"></span> Joven Búho · Editor de video en Medellín</footer>
+
+<div class="modal" id="modal">
+  <button class="close" id="close" aria-label="Cerrar">×</button>
+  <div class="box">
+    <div class="player" id="player"></div>
+    <h2 id="mTitle"></h2>
+    <p id="mDesc"></p>
+    <div class="meta" id="mMeta"></div>
+  </div>
+</div>
+
+<script src="site.js"></script>
+<script>initGrid("Storytelling");</script>
+</body>
+</html>

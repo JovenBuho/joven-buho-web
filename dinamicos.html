@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Videos Dinámicos — Joven Búho</title>
+<meta name="description" content="Edición dinámica: cortes rápidos, efectos de sonido y ritmo constante para redes sociales.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header><div class="nav">
+  <a class="logo" href="index.html">JOVEN <span>BÚHO</span></a>
+  <nav class="navlinks">
+    <a href="trabajos.html">Trabajos</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <div class="navline"></div>
+</div></header>
+
+<div class="page-hero reveal">
+  <h1><span class="white-neon">Videos</span> <span class="accent">Dinámicos</span></h1>
+  <p>Cortes rápidos y precisos, efectos de sonido que marcan cada golpe y un ritmo que no deja soltar el video. Ideal si tu contenido necesita enganchar en los primeros segundos.</p>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<section class="contact reveal">
+  <h2>¿Tu marca necesita este ritmo?</h2>
+  <p style="color:var(--mut)">Cuéntame tu idea por WhatsApp y armamos el plan.</p>
+  <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</section>
+
+<footer>© <span id="y"></span> Joven Búho · Editor de video en Medellín</footer>
+
+<div class="modal" id="modal">
+  <button class="close" id="close" aria-label="Cerrar">×</button>
+  <div class="box">
+    <div class="player" id="player"></div>
+    <h2 id="mTitle"></h2>
+    <p id="mDesc"></p>
+    <div class="meta" id="mMeta"></div>
+  </div>
+</div>
+
+<script src="site.js"></script>
+<script>initGrid("Dinámicos");</script>
+</body>
+</html>
