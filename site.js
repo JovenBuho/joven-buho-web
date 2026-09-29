@@ -39,6 +39,41 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   });
 })();
 
+(function paginate(){
+  const wrap=document.getElementById("screens");
+  if(!wrap) return;
+  const screens=[...wrap.querySelectorAll(".screen")];
+  const dotsBox=document.getElementById("screenDots");
+  const nextBtn=document.getElementById("screenNext");
+  const header=document.querySelector("header");
+  if(header) document.documentElement.style.setProperty("--header-h", header.offsetHeight+"px");
+
+  dotsBox.innerHTML=screens.map((_,n)=>`<button aria-label="Ir a sección ${n+1}"></button>`).join("");
+  const dots=[...dotsBox.querySelectorAll("button")];
+  let idx=screens.findIndex(s=>s.classList.contains("active"));
+  if(idx<0) idx=0;
+
+  function show(n){
+    idx=Math.max(0,Math.min(screens.length-1,n));
+    screens.forEach((s,i)=>s.classList.toggle("active",i===idx));
+    dots.forEach((d,i)=>d.classList.toggle("on",i===idx));
+    nextBtn.classList.toggle("hide",idx===screens.length-1);
+  }
+  dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
+  nextBtn.addEventListener("click",()=>show(idx+1));
+  document.addEventListener("keydown",e=>{
+    if(e.key==="ArrowDown"||e.key==="ArrowRight") show(idx+1);
+    if(e.key==="ArrowUp"||e.key==="ArrowLeft") show(idx-1);
+  });
+
+  const hash=location.hash.slice(1);
+  if(hash){
+    const target=screens.findIndex(s=>s.querySelector("#"+CSS.escape(hash)));
+    if(target>=0) idx=target;
+  }
+  show(idx);
+})();
+
 function embed(url){
   if(!url) return "";
   let m=url.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);

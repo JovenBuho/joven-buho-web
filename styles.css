@@ -105,3 +105,24 @@ footer{text-align:center;color:var(--mut);font-size:.8rem;padding:30px;border-to
   .cta-row{justify-content:center}
   .navlinks{display:none}
 }
+
+/* Home en pantallas completas: una sección = un viewport, navegación solo por clic */
+body.paginated{height:100vh;overflow:hidden}
+.screens{position:relative;height:calc(100vh - var(--header-h,73px));overflow:hidden}
+.screens .screen{position:absolute;inset:0;overflow-y:auto;display:flex;align-items:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s ease}
+.screens .screen.active{opacity:1;visibility:visible;pointer-events:auto}
+.screens .screen>*{width:100%;border-top:none;padding-top:0;padding-bottom:0}
+
+.screen-dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:12px}
+.screen-dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--mut);background:none;cursor:pointer;padding:0}
+.screen-dots button.on{background:var(--red);border-color:var(--red);box-shadow:0 0 8px rgba(225,11,31,.8)}
+
+.screen-next{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:30;background:none;border:1px solid var(--line);color:var(--mut);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;animation:screenBounce 2s ease-in-out infinite}
+.screen-next:hover{border-color:var(--red);color:var(--txt)}
+.screen-next.hide{display:none}
+@keyframes screenBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+
+@media (max-width:820px){
+  .screen-dots{right:14px;gap:9px}
+  .screens .screen>*{padding-top:20px}
+}
