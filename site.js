@@ -19,30 +19,43 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 
 (function guideCursor(){
   const btn=document.querySelector(".hero .cta.ghost");
-  if(!btn) return;
+  const circle=document.getElementById("heroVisual");
+  if(!btn || !circle) return;
   const cur=document.createElement("div");
   cur.className="guide-cursor";
   cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 2l14 6-5.5 2L15 16l-3 1.5-2.5-6L4 15z" fill="#fff" stroke="#000" stroke-width="1"/></svg><span class="guide-click"></span>';
   document.body.appendChild(cur);
-  setTimeout(()=>{
-    const r=btn.getBoundingClientRect();
-    const endX=r.left+r.width*0.45, endY=r.top+r.height*0.45;
-    const startX=Math.min(endX+90, window.innerWidth-20);
-    const startY=Math.min(endY+70, window.innerHeight-20);
-    cur.style.transition="none";
-    cur.style.transform=`translate(${startX}px,${startY}px)`;
+
+  function goTo(x,y,dur){
+    return new Promise(res=>{
+      cur.style.transitionDuration=dur+"ms";
+      cur.style.transform=`translate(${x}px,${y}px)`;
+      setTimeout(res,dur);
+    });
+  }
+
+  setTimeout(async ()=>{
+    const b=btn.getBoundingClientRect();
+    const c=circle.getBoundingClientRect();
+    const endX=b.left+b.width*0.45, endY=b.top+b.height*0.45;
+    const path=[
+      [window.innerWidth-30, c.top+c.height*0.35],
+      [c.left+c.width*0.88, c.top-10],
+      [c.left-40, c.bottom+15],
+      [endX, endY]
+    ];
+    cur.style.transitionDuration="0ms";
+    cur.style.transform=`translate(${path[0][0]}px,${path[0][1]}px)`;
     cur.classList.add("show");
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      cur.style.transition="";
-      cur.style.transform=`translate(${endX}px,${endY}px)`;
-    }));
-    setTimeout(()=>{
-      cur.classList.add("clicking");
-      cur.querySelector(".guide-click").classList.add("pulse");
-    },1050);
-    setTimeout(()=>cur.classList.remove("clicking"),1250);
-    setTimeout(()=>cur.classList.remove("show"),1700);
-    setTimeout(()=>cur.remove(),2200);
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    await goTo(path[1][0],path[1][1],550);
+    await goTo(path[2][0],path[2][1],550);
+    await goTo(path[3][0],path[3][1],550);
+    cur.classList.add("clicking");
+    cur.querySelector(".guide-click").classList.add("pulse");
+    setTimeout(()=>cur.classList.remove("clicking"),250);
+    setTimeout(()=>cur.classList.remove("show"),450);
+    setTimeout(()=>cur.remove(),950);
   },2800);
 })();
 
