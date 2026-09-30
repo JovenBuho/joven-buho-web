@@ -20,7 +20,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.12}
 .hero h1 .accent{color:var(--red);text-shadow:0 0 8px rgba(225,11,31,.85),0 0 18px rgba(225,11,31,.55),0 0 34px rgba(225,11,31,.3)}
 .hero h1 .white-neon{text-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55),0 0 34px rgba(255,255,255,.3)}
-.type-cursor{display:inline-block;width:.07em;height:.9em;margin-left:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55);animation:typeBlink 1s step-end infinite;vertical-align:-.1em}
+.type-cursor{display:inline-block;width:.07em;height:.9em;margin-left:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55);animation:typeBlink 2.2s step-end infinite;vertical-align:-.1em}
 .type-cursor.typing{animation:none;opacity:1}
 @keyframes typeBlink{0%,100%{opacity:1}50%{opacity:0}}
 
