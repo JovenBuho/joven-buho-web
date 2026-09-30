@@ -26,7 +26,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:translateY(0)}
-.hero p{color:var(--mut);max-width:46ch;margin-top:18px;font-size:1.02rem}
+.hero p{color:#d8d8d8;max-width:46ch;margin-top:18px;font-size:1.02rem}
 .hero .cta-row{display:flex;gap:14px;margin-top:28px}
 .hero .cta{background:rgba(225,11,31,.12);border:1px solid var(--red);color:var(--txt);padding:12px 24px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 16px rgba(225,11,31,.5)}
 .hero .cta.ghost{background:none;border:1px solid var(--line);color:var(--txt);box-shadow:none}
