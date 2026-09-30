@@ -19,32 +19,26 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 
 (function hoverVapor(){
   const vis=document.getElementById("heroVisual");
-  if(!vis) return;
-  const spans=[...vis.querySelectorAll(".hover-vapor span")];
-  let fadeTimer=null;
-
+  const box=document.getElementById("hoverVapor");
+  if(!vis || !box) return;
+  const positions=[
+    {top:"-8%",left:"44%"},
+    {top:"6%",right:"-8%"},
+    {top:"42%",right:"-10%"},
+    {bottom:"6%",right:"-8%"},
+    {bottom:"-8%",left:"44%"},
+    {bottom:"6%",left:"-8%"},
+    {top:"42%",left:"-10%"},
+    {top:"6%",left:"-8%"}
+  ];
   vis.addEventListener("mouseenter",()=>{
-    clearTimeout(fadeTimer);
-    spans.forEach(s=>{s.style.transition="";s.style.opacity="";s.style.transform="";s.style.animation="";});
-    vis.classList.add("vapor-on");
-  });
-
-  vis.addEventListener("mouseleave",()=>{
-    spans.forEach(s=>{
-      const cs=getComputedStyle(s);
-      s.style.animation="none";
-      s.style.opacity=cs.opacity;
-      s.style.transform=cs.transform;
+    positions.forEach((pos,i)=>{
+      const s=document.createElement("span");
+      Object.assign(s.style,pos);
+      s.style.animationDelay=(i*0.16)+"s";
+      s.addEventListener("animationend",()=>s.remove());
+      box.appendChild(s);
     });
-    vis.classList.remove("vapor-on");
-    spans.forEach(s=>void s.offsetHeight);
-    spans.forEach(s=>{
-      s.style.transition="opacity .9s ease";
-      s.style.opacity="0";
-    });
-    fadeTimer=setTimeout(()=>{
-      spans.forEach(s=>{s.style.transition="";s.style.opacity="";s.style.transform="";s.style.animation="";});
-    },950);
   });
 })();
 
