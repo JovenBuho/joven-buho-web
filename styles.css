@@ -69,8 +69,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 @keyframes smokeRise{0%{opacity:0;transform:translate(0,10%) scale(.5) rotate(0deg)}15%{opacity:1}55%{opacity:.85;transform:translate(-6%,-45%) scale(1.25) rotate(8deg)}100%{opacity:0;transform:translate(10%,-95%) scale(1.9) rotate(-6deg)}}
 
 .hover-vapor{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
-.hover-vapor span{position:absolute;width:70px;height:70px;border-radius:46% 54% 60% 40%/50% 45% 55% 50%;background:radial-gradient(circle,rgba(255,60,60,.95) 0%,rgba(225,11,31,.75) 40%,transparent 75%);filter:blur(10px);opacity:0;mix-blend-mode:screen}
-.hero-visual:hover .hover-vapor span{animation:hoverVaporBurst 1.3s ease-out infinite}
+.hover-vapor span{position:absolute;width:70px;height:70px;border-radius:46% 54% 60% 40%/50% 45% 55% 50%;background:radial-gradient(circle,rgba(255,60,60,.95) 0%,rgba(225,11,31,.75) 40%,transparent 75%);filter:blur(10px);opacity:0;mix-blend-mode:screen;transition:opacity .8s ease}
+.hero-visual.vapor-on .hover-vapor span{animation:hoverVaporBurst 1.3s ease-out infinite}
 .hover-vapor span:nth-child(1){top:-8%;left:44%;animation-delay:0s}
 .hover-vapor span:nth-child(2){top:6%;right:-8%;animation-delay:.16s}
 .hover-vapor span:nth-child(3){top:42%;right:-10%;animation-delay:.32s}

@@ -17,6 +17,13 @@ const wa="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(MENSAJE);
 document.querySelectorAll("#waBtn").forEach(a=>a.href=wa);
 if($("#y")) $("#y").textContent=new Date().getFullYear();
 
+(function hoverVapor(){
+  const vis=document.getElementById("heroVisual");
+  if(!vis) return;
+  vis.addEventListener("mouseenter",()=>vis.classList.add("vapor-on"));
+  vis.addEventListener("mouseleave",()=>vis.classList.remove("vapor-on"));
+})();
+
 (function guideCursor(){
   const btn=document.querySelector(".hero .cta.ghost");
   const circle=document.getElementById("heroVisual");
