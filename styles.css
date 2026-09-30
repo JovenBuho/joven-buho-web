@@ -9,8 +9,9 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .nav{max-width:1200px;margin:auto;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:relative}
 .logo{font-weight:800;letter-spacing:.18em;font-size:1.1rem;text-transform:uppercase;text-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55),0 0 34px rgba(255,255,255,.3)}
 .logo span{color:var(--red);text-shadow:0 0 8px rgba(225,11,31,.85),0 0 18px rgba(225,11,31,.55),0 0 34px rgba(225,11,31,.3)}
-.navlinks{display:flex;gap:32px;font-size:.85rem;color:var(--mut);letter-spacing:.03em}
-.navlinks a:hover{color:var(--txt)}
+.navlinks{display:flex;gap:32px;font-size:.85rem;color:#fff;letter-spacing:.03em}
+.navlinks a{text-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55),0 0 34px rgba(255,255,255,.3);transition:color .2s,text-shadow .2s}
+.navlinks a:hover{color:var(--red);text-shadow:0 0 8px rgba(225,11,31,.85),0 0 18px rgba(225,11,31,.55),0 0 34px rgba(225,11,31,.3)}
 .navline{position:absolute;right:0;top:0;bottom:0;width:2px;background:var(--red)}
 
 /* Hero estilo referencia: círculo glow detrás del retrato */
