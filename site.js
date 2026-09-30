@@ -17,6 +17,34 @@ const wa="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(MENSAJE);
 document.querySelectorAll("#waBtn").forEach(a=>a.href=wa);
 if($("#y")) $("#y").textContent=new Date().getFullYear();
 
+(function guideCursor(){
+  const btn=document.querySelector(".hero .cta.ghost");
+  if(!btn) return;
+  const cur=document.createElement("div");
+  cur.className="guide-cursor";
+  cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 2l14 6-5.5 2L15 16l-3 1.5-2.5-6L4 15z" fill="#fff" stroke="#000" stroke-width="1"/></svg><span class="guide-click"></span>';
+  document.body.appendChild(cur);
+  setTimeout(()=>{
+    const r=btn.getBoundingClientRect();
+    const startX=r.left+r.width+70, startY=r.top+r.height+70;
+    const endX=r.left+r.width*0.45, endY=r.top+r.height*0.45;
+    cur.style.transition="none";
+    cur.style.transform=`translate(${startX}px,${startY}px)`;
+    cur.classList.add("show");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      cur.style.transition="";
+      cur.style.transform=`translate(${endX}px,${endY}px)`;
+    }));
+    setTimeout(()=>{
+      cur.classList.add("clicking");
+      cur.querySelector(".guide-click").classList.add("pulse");
+    },1050);
+    setTimeout(()=>cur.classList.remove("clicking"),1250);
+    setTimeout(()=>cur.classList.remove("show"),1700);
+    setTimeout(()=>cur.remove(),2200);
+  },2800);
+})();
+
 (function typewriter(){
   const el=document.getElementById("typeTitle");
   if(!el) return;
