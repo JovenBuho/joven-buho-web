@@ -128,8 +128,9 @@ body.paginated{height:100vh;overflow:hidden}
 .screen-dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--mut);background:none;cursor:pointer;padding:0}
 .screen-dots button.on{background:var(--red);border-color:var(--red);box-shadow:0 0 8px rgba(225,11,31,.8)}
 
-.screen-next{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:30;background:none;border:1px solid var(--line);color:var(--mut);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;animation:screenBounce 2s ease-in-out infinite}
-.screen-next:hover{border-color:var(--red);color:var(--txt)}
+.screen-next{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:30;background:rgba(225,11,31,.12);border:1px solid var(--red);color:#fff;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:1.2rem;text-shadow:0 0 8px rgba(255,255,255,.9);box-shadow:0 0 10px 1px rgba(225,11,31,.9),0 0 24px 4px rgba(225,11,31,.7);animation:screenBounce 2s ease-in-out infinite,screenNextGlow 2s ease-in-out infinite}
+.screen-next:hover{background:rgba(225,11,31,.22);box-shadow:0 0 14px 2px rgba(225,11,31,1),0 0 36px 8px rgba(225,11,31,.85)}
+@keyframes screenNextGlow{0%,100%{box-shadow:0 0 10px 1px rgba(225,11,31,.9),0 0 24px 4px rgba(225,11,31,.7)}50%{box-shadow:0 0 16px 3px rgba(225,11,31,1),0 0 38px 10px rgba(225,11,31,.9)}}
 .screen-next.hide{display:none}
 @keyframes screenBounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
