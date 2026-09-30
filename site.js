@@ -48,17 +48,17 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     cur.style.transform=`translate(${p0[0]}px,${p0[1]}px)`;
     cur.classList.add("show");
     void cur.offsetHeight;
-    cur.style.animation="guidePathAnim 5s forwards";
+    cur.style.animation="guidePathAnim 10s forwards";
 
     cur.addEventListener("animationend",()=>{
       cur.classList.add("clicking");
       cur.querySelector(".guide-click").classList.add("pulse");
       btn.classList.add("guide-press","guide-ripple");
-      setTimeout(()=>cur.classList.remove("clicking"),300);
-      setTimeout(()=>cur.classList.remove("show"),550);
-      setTimeout(()=>{cur.remove();styleTag.remove();},1050);
-      setTimeout(()=>btn.classList.remove("guide-press"),300);
-      setTimeout(()=>btn.classList.remove("guide-ripple"),700);
+      setTimeout(()=>cur.classList.remove("clicking"),900);
+      setTimeout(()=>cur.classList.remove("show"),1650);
+      setTimeout(()=>{cur.remove();styleTag.remove();},3150);
+      setTimeout(()=>btn.classList.remove("guide-press"),900);
+      setTimeout(()=>btn.classList.remove("guide-ripple"),2100);
     },{once:true});
   },2800);
 })();
