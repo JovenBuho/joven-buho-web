@@ -20,8 +20,32 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 (function hoverVapor(){
   const vis=document.getElementById("heroVisual");
   if(!vis) return;
-  vis.addEventListener("mouseenter",()=>vis.classList.add("vapor-on"));
-  vis.addEventListener("mouseleave",()=>vis.classList.remove("vapor-on"));
+  const spans=[...vis.querySelectorAll(".hover-vapor span")];
+  let fadeTimer=null;
+
+  vis.addEventListener("mouseenter",()=>{
+    clearTimeout(fadeTimer);
+    spans.forEach(s=>{s.style.transition="";s.style.opacity="";s.style.transform="";s.style.animation="";});
+    vis.classList.add("vapor-on");
+  });
+
+  vis.addEventListener("mouseleave",()=>{
+    spans.forEach(s=>{
+      const cs=getComputedStyle(s);
+      s.style.animation="none";
+      s.style.opacity=cs.opacity;
+      s.style.transform=cs.transform;
+    });
+    vis.classList.remove("vapor-on");
+    spans.forEach(s=>void s.offsetHeight);
+    spans.forEach(s=>{
+      s.style.transition="opacity .9s ease";
+      s.style.opacity="0";
+    });
+    fadeTimer=setTimeout(()=>{
+      spans.forEach(s=>{s.style.transition="";s.style.opacity="";s.style.transform="";s.style.animation="";});
+    },950);
+  });
 })();
 
 (function guideCursor(){
