@@ -40,8 +40,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .reveal.in{opacity:1;transform:translateY(0)}
 .hero p{color:#fff;max-width:46ch;margin-top:18px;font-size:1.02rem}
 .hero .cta-row{display:flex;gap:14px;margin-top:28px}
-.hero .cta{background:rgba(225,11,31,.12);border:1px solid var(--red);color:var(--txt);padding:12px 24px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 16px rgba(225,11,31,.5)}
+.hero .cta{background:rgba(225,11,31,.12);border:1px solid var(--red);color:var(--txt);padding:12px 24px;border-radius:999px;font-weight:700;font-size:.85rem;box-shadow:0 0 16px rgba(225,11,31,.5);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
 .hero .cta.ghost{background:rgba(225,11,31,.12);border:1px solid var(--red);color:var(--txt);box-shadow:0 0 16px rgba(225,11,31,.5)}
+.hero .cta.guide-press{transform:scale(.92);background:rgba(225,11,31,.4);box-shadow:0 0 10px 2px rgba(225,11,31,.9),0 0 40px 10px rgba(225,11,31,.8)}
+.hero .cta.guide-ripple{position:relative;overflow:visible}
+.hero .cta.guide-ripple::after{content:"";position:absolute;inset:-1px;border-radius:999px;border:1px solid var(--red);opacity:.9;animation:guideRipple .55s ease-out}
+@keyframes guideRipple{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
 .social{display:flex;gap:12px;margin-top:26px}
 .social a{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--mut)}
 .social a:hover{border-color:var(--red);color:var(--txt)}

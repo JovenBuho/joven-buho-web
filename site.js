@@ -53,9 +53,12 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     await goTo(path[3][0],path[3][1],550);
     cur.classList.add("clicking");
     cur.querySelector(".guide-click").classList.add("pulse");
+    btn.classList.add("guide-press","guide-ripple");
     setTimeout(()=>cur.classList.remove("clicking"),250);
     setTimeout(()=>cur.classList.remove("show"),450);
     setTimeout(()=>cur.remove(),950);
+    setTimeout(()=>btn.classList.remove("guide-press"),200);
+    setTimeout(()=>btn.classList.remove("guide-ripple"),600);
   },2800);
 })();
 
