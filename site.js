@@ -47,7 +47,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     cur.style.transitionDuration="0ms";
     cur.style.transform=`translate(${path[0][0]}px,${path[0][1]}px)`;
     cur.classList.add("show");
-    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    void cur.offsetHeight;
     await goTo(path[1][0],path[1][1],550);
     await goTo(path[2][0],path[2][1],550);
     await goTo(path[3][0],path[3][1],550);
