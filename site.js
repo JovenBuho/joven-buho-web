@@ -26,8 +26,9 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   document.body.appendChild(cur);
   setTimeout(()=>{
     const r=btn.getBoundingClientRect();
-    const startX=r.left+r.width+70, startY=r.top+r.height+70;
     const endX=r.left+r.width*0.45, endY=r.top+r.height*0.45;
+    const startX=Math.min(endX+90, window.innerWidth-20);
+    const startY=Math.min(endY+70, window.innerHeight-20);
     cur.style.transition="none";
     cur.style.transform=`translate(${startX}px,${startY}px)`;
     cur.classList.add("show");
