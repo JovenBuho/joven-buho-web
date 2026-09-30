@@ -26,39 +26,40 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 2l14 6-5.5 2L15 16l-3 1.5-2.5-6L4 15z" fill="#fff" stroke="#000" stroke-width="1"/></svg><span class="guide-click"></span>';
   document.body.appendChild(cur);
 
-  function goTo(x,y,dur){
-    return new Promise(res=>{
-      cur.style.transitionDuration=dur+"ms";
-      cur.style.transform=`translate(${x}px,${y}px)`;
-      setTimeout(res,dur);
-    });
-  }
-
-  setTimeout(async ()=>{
+  setTimeout(()=>{
     const b=btn.getBoundingClientRect();
     const c=circle.getBoundingClientRect();
     const endX=b.left+b.width*0.45, endY=b.top+b.height*0.45;
-    const path=[
-      [window.innerWidth-30, c.top+c.height*0.35],
-      [c.left+c.width*0.88, c.top-10],
-      [c.left-40, c.bottom+15],
-      [endX, endY]
-    ];
-    cur.style.transitionDuration="0ms";
-    cur.style.transform=`translate(${path[0][0]}px,${path[0][1]}px)`;
+    const p0=[window.innerWidth-30, c.top+c.height*0.35];
+    const p1=[c.left+c.width*0.88, c.top-10];
+    const p2=[c.left-40, c.bottom+15];
+    const p3=[endX, endY];
+
+    const styleTag=document.createElement("style");
+    styleTag.textContent=`
+      @keyframes guidePathAnim{
+        0%{transform:translate(${p0[0]}px,${p0[1]}px);animation-timing-function:cubic-bezier(.25,.1,.25,1)}
+        32%{transform:translate(${p1[0]}px,${p1[1]}px);animation-timing-function:cubic-bezier(.6,0,.15,1)}
+        58%{transform:translate(${p2[0]}px,${p2[1]}px);animation-timing-function:cubic-bezier(.25,.1,.25,1)}
+        100%{transform:translate(${p3[0]}px,${p3[1]}px)}
+      }`;
+    document.head.appendChild(styleTag);
+
+    cur.style.transform=`translate(${p0[0]}px,${p0[1]}px)`;
     cur.classList.add("show");
     void cur.offsetHeight;
-    await goTo(path[1][0],path[1][1],550);
-    await goTo(path[2][0],path[2][1],550);
-    await goTo(path[3][0],path[3][1],550);
-    cur.classList.add("clicking");
-    cur.querySelector(".guide-click").classList.add("pulse");
-    btn.classList.add("guide-press","guide-ripple");
-    setTimeout(()=>cur.classList.remove("clicking"),250);
-    setTimeout(()=>cur.classList.remove("show"),450);
-    setTimeout(()=>cur.remove(),950);
-    setTimeout(()=>btn.classList.remove("guide-press"),200);
-    setTimeout(()=>btn.classList.remove("guide-ripple"),600);
+    cur.style.animation="guidePathAnim 5s forwards";
+
+    cur.addEventListener("animationend",()=>{
+      cur.classList.add("clicking");
+      cur.querySelector(".guide-click").classList.add("pulse");
+      btn.classList.add("guide-press","guide-ripple");
+      setTimeout(()=>cur.classList.remove("clicking"),300);
+      setTimeout(()=>cur.classList.remove("show"),550);
+      setTimeout(()=>{cur.remove();styleTag.remove();},1050);
+      setTimeout(()=>btn.classList.remove("guide-press"),300);
+      setTimeout(()=>btn.classList.remove("guide-ripple"),700);
+    },{once:true});
   },2800);
 })();
 

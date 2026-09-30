@@ -23,7 +23,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .type-cursor{display:inline-block;width:.07em;height:.9em;margin-left:2px;background:#fff;box-shadow:0 0 8px rgba(255,255,255,.85),0 0 18px rgba(255,255,255,.55);animation:typeBlink 1s step-end infinite;vertical-align:-.1em}
 .type-cursor.typing{animation:none;opacity:1}
 
-.guide-cursor{position:fixed;top:0;left:0;width:28px;height:28px;pointer-events:none;z-index:40;opacity:0;transition:transform 1s cubic-bezier(.65,0,.35,1),opacity .4s ease}
+.guide-cursor{position:fixed;top:0;left:0;width:28px;height:28px;pointer-events:none;z-index:40;opacity:0;transition:opacity .4s ease}
 .guide-cursor.show{opacity:1}
 .guide-cursor svg{width:100%;height:100%;filter:drop-shadow(0 2px 5px rgba(0,0,0,.7));transition:transform .15s ease}
 .guide-cursor.clicking svg{transform:scale(.8)}
