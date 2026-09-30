@@ -68,6 +68,19 @@ header{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.88);backdrop-f
 .smoke span:nth-child(9){right:10%;bottom:-6%;width:125px;height:125px;animation-delay:4s}
 @keyframes smokeRise{0%{opacity:0;transform:translate(0,10%) scale(.5) rotate(0deg)}15%{opacity:1}55%{opacity:.85;transform:translate(-6%,-45%) scale(1.25) rotate(8deg)}100%{opacity:0;transform:translate(10%,-95%) scale(1.9) rotate(-6deg)}}
 
+.hover-vapor{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
+.hover-vapor span{position:absolute;width:70px;height:70px;border-radius:46% 54% 60% 40%/50% 45% 55% 50%;background:radial-gradient(circle,rgba(255,60,60,.95) 0%,rgba(225,11,31,.75) 40%,transparent 75%);filter:blur(10px);opacity:0;mix-blend-mode:screen}
+.hero-visual:hover .hover-vapor span{animation:hoverVaporBurst 1.3s ease-out infinite}
+.hover-vapor span:nth-child(1){top:-8%;left:44%;animation-delay:0s}
+.hover-vapor span:nth-child(2){top:6%;right:-8%;animation-delay:.16s}
+.hover-vapor span:nth-child(3){top:42%;right:-10%;animation-delay:.32s}
+.hover-vapor span:nth-child(4){bottom:6%;right:-8%;animation-delay:.48s}
+.hover-vapor span:nth-child(5){bottom:-8%;left:44%;animation-delay:.64s}
+.hover-vapor span:nth-child(6){bottom:6%;left:-8%;animation-delay:.8s}
+.hover-vapor span:nth-child(7){top:42%;left:-10%;animation-delay:.96s}
+.hover-vapor span:nth-child(8){top:6%;left:-8%;animation-delay:1.12s}
+@keyframes hoverVaporBurst{0%{opacity:0;transform:scale(.3) translateY(0)}20%{opacity:.9}70%{opacity:.5;transform:scale(1.3) translateY(-16px)}100%{opacity:0;transform:scale(1.8) translateY(-28px)}}
+
 .page-hero{max-width:1200px;margin:auto;padding:70px 24px 20px;text-align:center}
 .page-hero h1{font-size:clamp(1.9rem,4.5vw,2.8rem)}
 .page-hero p{color:var(--mut);max-width:60ch;margin:14px auto 0}

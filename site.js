@@ -98,27 +98,6 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   setTimeout(tick,300);
 })();
 
-(function heroParallax(){
-  const vis=document.getElementById("heroVisual");
-  if(!vis) return;
-  const frame=vis.querySelector(".frame");
-  const radius=220;
-  document.addEventListener("mousemove", e=>{
-    const r=vis.getBoundingClientRect();
-    const cx=r.left+r.width/2, cy=r.top+r.height/2;
-    const dx=e.clientX-cx, dy=e.clientY-cy;
-    const dist=Math.hypot(dx,dy);
-    if(dist<radius){
-      const p=1-dist/radius;
-      const rotZ=-(dx/radius)*p*12;
-      const rotY=-(dx/radius)*p*28;
-      const rotX=(dy/radius)*p*28;
-      frame.style.transform=`translate3d(${-(dx/radius)*50*p}px, ${-(dy/radius)*50*p}px, ${p*60}px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${1-p*.07})`;
-    } else {
-      frame.style.transform="translate3d(0,0,0) rotateX(0) rotateY(0) rotateZ(0) scale(1)";
-    }
-  });
-})();
 
 (function paginate(){
   const wrap=document.getElementById("screens");
