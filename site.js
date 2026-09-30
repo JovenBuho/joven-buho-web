@@ -126,6 +126,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   const screens=[...wrap.querySelectorAll(".screen")];
   const dotsBox=document.getElementById("screenDots");
   const nextBtn=document.getElementById("screenNext");
+  const nextWrap=document.getElementById("screenNextWrap")||nextBtn;
   const header=document.querySelector("header");
   if(header) document.documentElement.style.setProperty("--header-h", header.offsetHeight+"px");
 
@@ -137,7 +138,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     idx=Math.max(0,Math.min(screens.length-1,n));
     screens.forEach((s,i)=>s.classList.toggle("active",i===idx));
     dots.forEach((d,i)=>d.classList.toggle("on",i===idx));
-    nextBtn.classList.toggle("hide",idx===screens.length-1);
+    nextWrap.classList.toggle("hide",idx===screens.length-1);
   }
   dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
   nextBtn.addEventListener("click",()=>show(idx+1));
