@@ -17,6 +17,41 @@ const wa="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(MENSAJE);
 document.querySelectorAll("#waBtn").forEach(a=>a.href=wa);
 if($("#y")) $("#y").textContent=new Date().getFullYear();
 
+(function typewriter(){
+  const el=document.getElementById("typeTitle");
+  if(!el) return;
+  const segments=[
+    {text:"Soy ",cls:"white-neon"},
+    {text:"Joven Búho",cls:"accent"},
+    {text:"\n",cls:null},
+    {text:"Editor de video.",cls:"white-neon"}
+  ];
+  el.innerHTML='<span class="type-cursor typing"></span>';
+  const cursor=el.querySelector(".type-cursor");
+  let si=0,ci=0;
+  function tick(){
+    if(si>=segments.length){ cursor.classList.remove("typing"); return; }
+    const seg=segments[si];
+    if(seg.text==="\n"){
+      el.insertBefore(document.createElement("br"),cursor);
+      si++; ci=0;
+      return setTimeout(tick,120);
+    }
+    let span=el.querySelector(`span[data-seg="${si}"]`);
+    if(!span){
+      span=document.createElement("span");
+      span.className=seg.cls;
+      span.dataset.seg=si;
+      el.insertBefore(span,cursor);
+    }
+    span.textContent+=seg.text[ci];
+    ci++;
+    if(ci>=seg.text.length){ si++; ci=0; }
+    setTimeout(tick, 55+Math.random()*40);
+  }
+  setTimeout(tick,300);
+})();
+
 (function heroParallax(){
   const vis=document.getElementById("heroVisual");
   if(!vis) return;
