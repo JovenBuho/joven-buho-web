@@ -46,12 +46,16 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   const btn=document.querySelector(".hero .cta.ghost");
   const circle=document.getElementById("heroVisual");
   if(!btn || !circle) return;
-  const cur=document.createElement("div");
-  cur.className="guide-cursor";
-  cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 2l14 6-5.5 2L15 16l-3 1.5-2.5-6L4 15z" fill="#fff" stroke="#000" stroke-width="1"/></svg><span class="guide-click"></span>';
-  document.body.appendChild(cur);
+  let playing=false;
 
-  setTimeout(()=>{
+  function play(){
+    if(playing) return;
+    playing=true;
+    const cur=document.createElement("div");
+    cur.className="guide-cursor";
+    cur.innerHTML='<svg viewBox="0 0 24 24"><path d="M4 2l14 6-5.5 2L15 16l-3 1.5-2.5-6L4 15z" fill="#fff" stroke="#000" stroke-width="1"/></svg><span class="guide-click"></span>';
+    document.body.appendChild(cur);
+
     const b=btn.getBoundingClientRect();
     const c=circle.getBoundingClientRect();
     const endX=b.left+b.width*0.45, endY=b.top+b.height*0.45;
@@ -79,6 +83,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     const leaveHero=()=>{
       if(left) return;
       left=true;
+      playing=false;
       cur.remove();
       styleTag.remove();
       document.removeEventListener("screenchange",onScreenChange);
@@ -93,11 +98,14 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
       btn.classList.add("guide-press","guide-ripple");
       setTimeout(()=>cur.classList.remove("clicking"),900);
       setTimeout(()=>cur.classList.remove("show"),1650);
-      setTimeout(()=>{if(!left){cur.remove();styleTag.remove();}document.removeEventListener("screenchange",onScreenChange);},3150);
+      setTimeout(()=>{if(!left){cur.remove();styleTag.remove();playing=false;}document.removeEventListener("screenchange",onScreenChange);},3150);
       setTimeout(()=>btn.classList.remove("guide-press"),900);
       setTimeout(()=>btn.classList.remove("guide-ripple"),2100);
     },{once:true});
-  },2800);
+  }
+
+  setTimeout(play,2800);
+  document.addEventListener("screenchange",e=>{ if(e.detail.idx===0) setTimeout(play,900); });
 })();
 
 (function typewriter(){
