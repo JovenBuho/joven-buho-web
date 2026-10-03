@@ -75,13 +75,25 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     void cur.offsetHeight;
     cur.style.animation="guidePathAnim 10s forwards";
 
+    let left=false;
+    const leaveHero=()=>{
+      if(left) return;
+      left=true;
+      cur.remove();
+      styleTag.remove();
+      document.removeEventListener("screenchange",onScreenChange);
+    };
+    const onScreenChange=e=>{ if(e.detail.idx!==0) leaveHero(); };
+    document.addEventListener("screenchange",onScreenChange);
+
     cur.addEventListener("animationend",()=>{
+      if(left) return;
       cur.classList.add("clicking");
       cur.querySelector(".guide-click").classList.add("pulse");
       btn.classList.add("guide-press","guide-ripple");
       setTimeout(()=>cur.classList.remove("clicking"),900);
       setTimeout(()=>cur.classList.remove("show"),1650);
-      setTimeout(()=>{cur.remove();styleTag.remove();},3150);
+      setTimeout(()=>{if(!left){cur.remove();styleTag.remove();}document.removeEventListener("screenchange",onScreenChange);},3150);
       setTimeout(()=>btn.classList.remove("guide-press"),900);
       setTimeout(()=>btn.classList.remove("guide-ripple"),2100);
     },{once:true});
@@ -143,6 +155,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     screens.forEach((s,i)=>s.classList.toggle("active",i===idx));
     dots.forEach((d,i)=>d.classList.toggle("on",i===idx));
     nextWrap.classList.toggle("hide",idx===screens.length-1);
+    document.dispatchEvent(new CustomEvent("screenchange",{detail:{idx}}));
   }
   dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
   nextBtn.addEventListener("click",()=>show(idx+1));
