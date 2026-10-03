@@ -47,9 +47,11 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   const circle=document.getElementById("heroVisual");
   if(!btn || !circle) return;
   let playing=false;
+  let currentIdx=0;
+  document.addEventListener("screenchange",e=>{ currentIdx=e.detail.idx; });
 
   function play(){
-    if(playing) return;
+    if(playing || currentIdx!==0) return;
     playing=true;
     const cur=document.createElement("div");
     cur.className="guide-cursor";
