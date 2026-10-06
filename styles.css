@@ -105,6 +105,9 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .about-body .link-all{border:1px solid var(--red);border-radius:999px;padding:12px 22px;background:rgba(225,11,31,.12);box-shadow:0 0 10px 1px rgba(225,11,31,.5),0 0 22px 3px rgba(225,11,31,.25);transition:transform .25s,box-shadow .25s,background .25s}
 .about-body .link-all:hover{background:rgba(225,11,31,.22);box-shadow:0 0 14px 2px rgba(225,11,31,.9),0 0 32px 6px rgba(225,11,31,.5);transform:translateY(-2px)}
 .about p,.contact p{color:#fff;max-width:62ch;line-height:1.7;font-size:1.05rem}
+.about-body p{background-image:linear-gradient(135deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.72) 38%,#fff 48%,#fff 52%,rgba(255,255,255,.72) 62%,rgba(255,255,255,.72) 100%);background-size:280% 280%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:textGlowSweep 9s ease-in-out infinite alternate}
+@keyframes textGlowSweep{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+@media (prefers-reduced-motion:reduce){.about-body p{animation:none;background-image:none;color:#fff}}
 .contact p.fine{font-size:.8rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;max-width:720px}
 .stats>div{background:linear-gradient(155deg,rgba(225,11,31,.1),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px}
