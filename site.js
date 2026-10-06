@@ -237,6 +237,6 @@ function initGrid(fixedCat,limit){
       s.style.top=p.top+"%"; s.style.left=p.left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
       setTimeout(next, dur*1000*(.9+Math.random()*.3));
     }
-    setTimeout(next, Math.random()*4500);
+    setTimeout(next, Math.random()*400);
   });
 })();
