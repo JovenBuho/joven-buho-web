@@ -3,10 +3,11 @@ const WHATSAPP = "573016103030"; // Joven Búho — confirma que este es tu núm
 const MENSAJE  = "Hola Joven Búho, vi tu portafolio y quiero cotizar edición de video.";
 
 const PROYECTOS = [
-  {titulo:"Reel para @cristian_barbosa201", cat:"Dinámicos", desc:"Cortes rápidos y precisos, con efectos de sonido que le dan ritmo al video de principio a fin.", cliente:"@cristian_barbosa201", servicio:"Edición dinámica", video:"", cover:""},
-  {titulo:"Campaña para @bleiderbotero", cat:"Marketing", desc:"Transiciones suaves y gráficos animados que acompañan el mensaje de marca sin robarle protagonismo.", cliente:"@bleiderbotero", servicio:"Video marketing", video:"", cover:""},
-  {titulo:"Historia para @jajajairoramirez", cat:"Storytelling", desc:"Una historia con inicio, desarrollo y cierre, apoyada en música y efectos que la hacen fácil de seguir.", cliente:"@jajajairoramirez", servicio:"Storytelling", video:"", cover:""},
-  {titulo:"Institucional — Envigado Joven", cat:"Institucionales", desc:"Ritmo constante y cuidado en el tono, manteniendo la formalidad que pide un mensaje institucional.", cliente:"@envigadojovenoficial", servicio:"Video institucional", video:"", cover:""}
+  {titulo:"Video Dinámico x2", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://www.youtube.com/shorts/ZSgqDi63uH4", cover:""},
+  {titulo:"Video Recap", cat:"Marketing", desc:"", cliente:"", servicio:"Video marketing", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
+  {titulo:"Video Storytelling", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
+  {titulo:"Video Institucional", cat:"Institucionales", desc:"", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/ML2F9F2Jk4s", cover:""},
+  {titulo:"Video Político", cat:"Institucionales", desc:"", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/8mVFNdI8nTw", cover:""}
 ];
 /* =================================================== */
 
@@ -175,9 +176,9 @@ function embed(url){
   return "";
 }
 function thumb(p){
-  if(p.cover) return p.cover;
+  if(p.cover) return "url('"+p.cover+"')";
   const m=(p.video||"").match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);
-  return m?"https://img.youtube.com/vi/"+m[1]+"/hqdefault.jpg":"";
+  return m?"url('https://i.ytimg.com/vi/"+m[1]+"/maxresdefault.jpg'),url('https://i.ytimg.com/vi/"+m[1]+"/hqdefault.jpg')":"";
 }
 
 const revealIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");revealIO.unobserve(e.target)}}),{threshold:.15});
@@ -195,7 +196,7 @@ function initGrid(fixedCat,limit){
       $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa)).slice(0,limit||undefined);
-    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:url('${thumb(p)}')`:''}"></div><div class="info"><h3>${p.titulo}</h3><p>${p.cliente}</p><span class="tag">${p.cat}</span></div></article>`).join("");
+    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
     $("#grid").dataset.n=lista.length;
     revealObserve();
   }
@@ -208,8 +209,8 @@ function initGrid(fixedCat,limit){
     const c=e.target.closest(".card"); if(!c) return; opener=c;
     const p=PROYECTOS[c.dataset.i], src=embed(p.video);
     $("#player").innerHTML=src?`<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<div style="height:100%;display:grid;place-items:center;color:#666">Video próximamente</div>`;
-    $("#mTitle").textContent=p.titulo; $("#mDesc").textContent=p.desc;
-    $("#mMeta").innerHTML=`<div><b>Cliente</b>${p.cliente}</div><div><b>Servicio</b>${p.servicio}</div><div><b>Categoría</b>${p.cat}</div>`;
+    $("#mTitle").textContent=p.titulo; $("#mDesc").textContent=p.desc; $("#mDesc").hidden=!p.desc;
+    $("#mMeta").innerHTML=(p.cliente?`<div><b>Cliente</b>${p.cliente}</div>`:"")+`<div><b>Servicio</b>${p.servicio}</div><div><b>Categoría</b>${p.cat}</div>`;
     if($("#mCta")) $("#mCta").href=wa+encodeURIComponent(" Me interesó: "+p.titulo);
     $("#modal").classList.add("open"); document.body.style.overflow="hidden"; $("#close").focus();
   });

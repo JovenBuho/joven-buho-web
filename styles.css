@@ -261,3 +261,20 @@ a.eyebrow:hover{text-decoration:underline}
 .hero .cta.primary:hover{animation:none}
 @keyframes ctaBreath{0%,100%{transform:scale(1);box-shadow:0 0 8px 0 rgba(225,11,31,.45),0 0 18px 2px rgba(225,11,31,.25)}50%{transform:scale(1.045);box-shadow:0 0 14px 3px rgba(225,11,31,.95),0 0 38px 10px rgba(225,11,31,.5)}}
 @media (prefers-reduced-motion:reduce){.hero .cta.primary{animation:none}}
+
+/* Videos verticales (Shorts 9:16): tarjetas y reproductor */
+.grid,.grid[data-n]{grid-template-columns:repeat(auto-fit,minmax(190px,220px));justify-content:center;gap:22px}
+.thumb{aspect-ratio:9/16}
+.card .info{padding:14px 16px 16px}
+.player{aspect-ratio:9/16;height:min(78vh,640px);max-width:100%;margin:0 auto}
+.box{max-width:860px;display:grid;grid-template-columns:auto 1fr;column-gap:44px;align-items:start}
+.box .player{grid-row:1/span 5}
+.box h2{margin-top:0}
+.box>:not(.player){grid-column:2}
+@media (max-width:760px){
+  .box{display:block;max-width:420px}
+  .box h2{margin-top:20px}
+  .player{height:auto;width:100%}
+  .grid,.grid[data-n]{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:0 16px 60px}
+}
+
