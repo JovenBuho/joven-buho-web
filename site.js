@@ -232,7 +232,7 @@ function initGrid(fixedCat,limit){
     function next(){
       const p=offCenterPoint();
       const op=.15+Math.random()*.4, scale=.55+Math.random()*.6;
-      const dur=7+Math.random()*9;
+      const dur=2.5+Math.random()*3.5;
       s.style.transition=`top ${dur}s ease-in-out,left ${dur}s ease-in-out,opacity ${dur}s ease-in-out,transform ${dur}s ease-in-out`;
       s.style.top=p.top+"%"; s.style.left=p.left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
       setTimeout(next, dur*1000*(.9+Math.random()*.3));

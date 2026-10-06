@@ -97,6 +97,12 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .cells span:nth-child(5){width:11vmax;height:11vmax;margin:-5.5vmax 0 0 -5.5vmax}
 .cells span:nth-child(7){width:14vmax;height:14vmax;margin:-7vmax 0 0 -7vmax}
 .cells span:nth-child(8){width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax}
+.cells span:nth-child(9){width:13vmax;height:13vmax;margin:-6.5vmax 0 0 -6.5vmax}
+.cells span:nth-child(10){width:17vmax;height:17vmax;margin:-8.5vmax 0 0 -8.5vmax}
+.cells span:nth-child(11){width:10vmax;height:10vmax;margin:-5vmax 0 0 -5vmax}
+.cells span:nth-child(12){width:19vmax;height:19vmax;margin:-9.5vmax 0 0 -9.5vmax}
+.cells span:nth-child(13){width:12.5vmax;height:12.5vmax;margin:-6.25vmax 0 0 -6.25vmax}
+.cells span:nth-child(14){width:15.5vmax;height:15.5vmax;margin:-7.75vmax 0 0 -7.75vmax}
 @media (prefers-reduced-motion:reduce){.cells span{animation:none;opacity:0}}
 .about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:0 0 6px rgba(255,255,255,.4),0 0 16px rgba(255,255,255,.18)}
 .cats h2{font-size:2.3rem}
