@@ -101,7 +101,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 @media (prefers-reduced-motion:reduce){.cats-head .link-all{animation:none}}
 .cats-sub{color:#fff;max-width:60ch;font-size:1.05rem}
 .about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:start}
-.about-body{background:linear-gradient(155deg,rgba(18,6,6,.85),rgba(16,16,16,.9));border:1px solid rgba(225,11,31,.28);border-radius:18px;padding:32px 34px;backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%)}
+.about-body{background:linear-gradient(155deg,rgba(18,6,6,.45),rgba(16,16,16,.5));border:1px solid rgba(225,11,31,.28);border-radius:18px;padding:32px 34px;backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%)}
 .about-body .link-all{border:1px solid var(--red);border-radius:999px;padding:12px 22px;background:rgba(225,11,31,.12);box-shadow:0 0 10px 1px rgba(225,11,31,.5),0 0 22px 3px rgba(225,11,31,.25);transition:transform .25s,box-shadow .25s,background .25s}
 .about-body .link-all:hover{background:rgba(225,11,31,.22);box-shadow:0 0 14px 2px rgba(225,11,31,.9),0 0 32px 6px rgba(225,11,31,.5);transform:translateY(-2px)}
 .about p,.contact p{color:#fff;max-width:62ch;line-height:1.7;font-size:1.05rem}
