@@ -111,6 +111,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     dots.forEach((d,i)=>d.classList.toggle("on",i===idx));
     nextWrap.classList.toggle("hide",idx===screens.length-1);
     document.dispatchEvent(new CustomEvent("screenchange",{detail:{idx}}));
+    try{ sessionStorage.setItem("screenIdx",idx); }catch(e){}
   }
   dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
   nextBtn.addEventListener("click",()=>show(idx+1));
@@ -140,8 +141,11 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   document.querySelectorAll('a.logo').forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); show(0); }));
 
   if(location.hash) history.replaceState(null,"",location.pathname);
-  show(window.__hash==="#sobre"?sobre:0);
-  window.addEventListener("pageshow",e=>{ if(e.persisted) show(0); });
+  let saved=-1;
+  try{ saved=parseInt(sessionStorage.getItem("screenIdx"),10); }catch(e){}
+  const start=window.__hash==="#sobre"?sobre:(Number.isInteger(saved)&&saved>=0&&saved<screens.length?saved:0);
+  show(start);
+  window.addEventListener("pageshow",e=>{ if(e.persisted) show(idx); });
 })();
 
 function embed(url){
