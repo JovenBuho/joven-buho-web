@@ -280,4 +280,9 @@ a.eyebrow:hover{text-decoration:underline}
 
 .box .cta{justify-self:start}
 
-.screens .screen>.works{max-width:none;padding-top:0;padding-bottom:96px}
+.screens .screen>.works{max-width:none;padding-top:0;padding-bottom:76px;align-self:flex-start;margin-block:auto}
+.works .page-hero{padding:16px 24px 0}
+.works .page-hero h1{font-size:clamp(1.9rem,4vw,2.6rem)}
+.works .page-hero p{margin-top:10px;font-size:.95rem}
+.works .filters{margin-top:14px;padding-bottom:18px}
+.works .grid{grid-template-columns:repeat(auto-fit,minmax(160px,185px))}
