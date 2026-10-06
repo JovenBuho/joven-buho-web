@@ -92,7 +92,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .tag{display:inline-block;margin-top:10px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
 
 .about,.contact,.cats{max-width:1200px;margin:auto;padding:60px 24px;border-top:1px solid var(--line)}
-.about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:var(--neon-w)}
+.about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:0 0 6px rgba(255,255,255,.4),0 0 16px rgba(255,255,255,.18)}
 .cats h2{font-size:2.3rem}
 .cats-sub{color:#fff;max-width:60ch;font-size:1.05rem}
 .about p{color:var(--mut);max-width:60ch}
