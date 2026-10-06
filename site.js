@@ -45,9 +45,11 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   if(!el || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   const segments=[
     {text:"Soy ",cls:"white-neon"},
-    {text:"Joven Búho",cls:"accent"},
+    {text:"Joven Búho,",cls:"accent"},
     {text:"\n",cls:null},
-    {text:"Editor de video.",cls:"white-neon"}
+    {text:"tu próximo",cls:"white-neon"},
+    {text:"\n",cls:null},
+    {text:"editor de video.",cls:"white-neon"}
   ];
   el.innerHTML='<span class="type-cursor typing"></span>';
   const cursor=el.querySelector(".type-cursor");
