@@ -298,4 +298,7 @@ a.eyebrow:hover{text-decoration:underline}
 
 .card .info h3,.modal .box h2{text-transform:uppercase;letter-spacing:.03em}
 
-.catnote{max-width:56ch;margin:-6px auto 18px;padding:0 24px;text-align:center;color:#fff;font-size:.95rem}.catnote[hidden]{display:none}
+.postdata{grid-column:span 2;align-self:center;padding:16px 20px;border:1px solid rgba(255,255,255,.16);border-left:3px solid var(--red);border-radius:12px;background:rgba(255,255,255,.03)}
+.postdata b{display:block;color:var(--red);font-size:.72rem;letter-spacing:.18em;margin-bottom:6px}
+.postdata p{margin:0;color:#d8d8d8;font-size:.9rem;line-height:1.5;font-style:italic}
+@media (max-width:640px){.postdata{grid-column:1/-1;max-width:none}}

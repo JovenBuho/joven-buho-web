@@ -192,7 +192,7 @@ function revealObserve(){document.querySelectorAll(".reveal:not(.in)").forEach(e
 document.querySelectorAll(".reveal").forEach(el=>revealIO.observe(el));
 
 /* Grid de proyectos: fixedCat="Dinámicos" fija la categoría (sin botones de filtro), null muestra todo con filtros */
-const NOTAS={Corporativo:"Estoy empezando en esta línea y estoy abierto a proyectos corporativos. Este es el primero. Si tu empresa necesita video, hablemos."};
+const NOTAS={Corporativo:"Estoy empezando en lo corporativo y estoy abierto a nuevos proyectos. Este es el primero. Si tu empresa necesita video, hablemos."};
 function initGrid(fixedCat,limit){
   if(!$("#grid")) return;
   const cats=[...new Set(PROYECTOS.map(p=>p.cat))];
@@ -205,7 +205,7 @@ function initGrid(fixedCat,limit){
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:p.cat===activa).slice(0,limit||undefined);
     $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}${p.cover?'':';background-size:316% auto'}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
     $("#grid").dataset.n=lista.length;
-    if($("#filters") && !fixedCat){let n=$("#catNote"); if(!n){n=document.createElement("p");n.id="catNote";n.className="catnote";$("#filters").after(n);} n.textContent=NOTAS[activa]||""; n.hidden=!NOTAS[activa];}
+    if(!fixedCat && NOTAS[activa]) $("#grid").insertAdjacentHTML("beforeend",`<aside class="postdata"><b>P. D.</b><p>${NOTAS[activa]}</p></aside>`);
     revealObserve();
   }
   if($("#filters") && !fixedCat){
