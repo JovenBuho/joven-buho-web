@@ -92,22 +92,23 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 /* Trabajos: "células" que se desprenden de un punto central y se alejan, como mitosis */
 .screens .screen>.cells{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;padding:0;margin:0;width:100%;height:100%}
 .cells span{position:absolute;width:16vmax;height:16vmax;margin:-8vmax 0 0 -8vmax;border-radius:50%;background:radial-gradient(circle,rgba(225,11,31,.55) 0%,rgba(225,11,31,.22) 55%,transparent 75%);filter:blur(26px)}
-.cells span:nth-child(1){animation:cellWander1 34s ease-in-out infinite;animation-delay:-2s}
-.cells span:nth-child(2){width:12vmax;height:12vmax;margin:-6vmax 0 0 -6vmax;animation:cellWander2 29s ease-in-out infinite;animation-delay:-11s}
-.cells span:nth-child(3){animation:cellWander3 38s ease-in-out infinite;animation-delay:-19s}
-.cells span:nth-child(4){width:20vmax;height:20vmax;margin:-10vmax 0 0 -10vmax;animation:cellWander4 31s ease-in-out infinite;animation-delay:-6s}
-.cells span:nth-child(5){width:11vmax;height:11vmax;margin:-5.5vmax 0 0 -5.5vmax;animation:cellWander5 26s ease-in-out infinite;animation-delay:-14s}
-.cells span:nth-child(6){animation:cellWander6 36s ease-in-out infinite;animation-delay:-22s}
-.cells span:nth-child(7){width:14vmax;height:14vmax;margin:-7vmax 0 0 -7vmax;animation:cellWander7 33s ease-in-out infinite;animation-delay:-3s}
-.cells span:nth-child(8){width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;animation:cellWander8 28s ease-in-out infinite;animation-delay:-17s}
-@keyframes cellWander1{0%{top:8%;left:12%;opacity:.3}22%{top:62%;left:28%;opacity:.55}47%{top:34%;left:70%;opacity:.4}71%{top:80%;left:85%;opacity:.5}100%{top:8%;left:12%;opacity:.3}}
-@keyframes cellWander2{0%{top:70%;left:80%;opacity:.4}26%{top:20%;left:60%;opacity:.5}53%{top:45%;left:10%;opacity:.3}79%{top:85%;left:35%;opacity:.5}100%{top:70%;left:80%;opacity:.4}}
-@keyframes cellWander3{0%{top:40%;left:50%;opacity:.3}18%{top:10%;left:85%;opacity:.5}44%{top:75%;left:60%;opacity:.4}68%{top:55%;left:15%;opacity:.5}100%{top:40%;left:50%;opacity:.3}}
-@keyframes cellWander4{0%{top:85%;left:20%;opacity:.4}24%{top:50%;left:5%;opacity:.3}50%{top:15%;left:40%;opacity:.5}77%{top:60%;left:75%;opacity:.4}100%{top:85%;left:20%;opacity:.4}}
-@keyframes cellWander5{0%{top:15%;left:65%;opacity:.35}30%{top:55%;left:90%;opacity:.5}58%{top:90%;left:50%;opacity:.3}82%{top:30%;left:25%;opacity:.5}100%{top:15%;left:65%;opacity:.35}}
-@keyframes cellWander6{0%{top:60%;left:45%;opacity:.3}20%{top:90%;left:10%;opacity:.5}48%{top:25%;left:20%;opacity:.4}73%{top:10%;left:60%;opacity:.5}100%{top:60%;left:45%;opacity:.3}}
-@keyframes cellWander7{0%{top:30%;left:30%;opacity:.4}27%{top:75%;left:55%;opacity:.3}55%{top:50%;left:90%;opacity:.5}80%{top:5%;left:70%;opacity:.4}100%{top:30%;left:30%;opacity:.4}}
-@keyframes cellWander8{0%{top:95%;left:60%;opacity:.3}25%{top:65%;left:25%;opacity:.5}52%{top:5%;left:50%;opacity:.4}76%{top:40%;left:95%;opacity:.5}100%{top:95%;left:60%;opacity:.3}}
+.cells span:nth-child(1){animation:cellPulse1 32s ease-in-out infinite;animation-delay:-.3s}
+.cells span:nth-child(2){width:12vmax;height:12vmax;margin:-6vmax 0 0 -6vmax;animation:cellPulse2 32s ease-in-out infinite;animation-delay:-.9s}
+.cells span:nth-child(3){animation:cellPulse3 32s ease-in-out infinite;animation-delay:-1.5s}
+.cells span:nth-child(4){width:20vmax;height:20vmax;margin:-10vmax 0 0 -10vmax;animation:cellPulse4 32s ease-in-out infinite;animation-delay:-2.1s}
+.cells span:nth-child(5){width:11vmax;height:11vmax;margin:-5.5vmax 0 0 -5.5vmax;animation:cellPulse5 32s ease-in-out infinite;animation-delay:-2.7s}
+.cells span:nth-child(6){animation:cellPulse6 32s ease-in-out infinite;animation-delay:-3.3s}
+.cells span:nth-child(7){width:14vmax;height:14vmax;margin:-7vmax 0 0 -7vmax;animation:cellPulse7 32s ease-in-out infinite;animation-delay:-3.9s}
+.cells span:nth-child(8){width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;animation:cellPulse8 32s ease-in-out infinite;animation-delay:-4.5s}
+/* Ciclo compartido: juntas en el centro (opacidad y escala baja) -> se separan hacia esquina/borde propio (pico) -> vuelven a juntarse. Cada una cubre una zona distinta: 4 esquinas + 4 bordes medios */
+@keyframes cellPulse1{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:8%;left:10%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse2{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:8%;left:90%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse3{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:92%;left:12%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse4{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:90%;left:88%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse5{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:6%;left:50%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse6{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:94%;left:50%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse7{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:50%;left:6%;opacity:.5;transform:scale(1)}}
+@keyframes cellPulse8{0%,100%{top:50%;left:50%;opacity:.12;transform:scale(.55)}45%,55%{top:50%;left:94%;opacity:.5;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.cells span{animation:none;opacity:0}}
 .about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:0 0 6px rgba(255,255,255,.4),0 0 16px rgba(255,255,255,.18)}
 .cats h2{font-size:2.3rem}
