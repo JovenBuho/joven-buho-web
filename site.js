@@ -3,6 +3,7 @@ const WHATSAPP = "573016103030"; // Joven Búho — confirma que este es tu núm
 const MENSAJE  = "Hola Joven Búho, vi tu portafolio y quiero cotizar edición de video.";
 
 const PROYECTOS = [
+  {titulo:"Mente Humana", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://vimeo.com/1044362907", cover:"https://i.vimeocdn.com/video/1967745909-03a827b3b9d240c5d5143bb31c34709b034624ccabd5e4d17ecf9b1dc93855ea-d_640?region=us"},
   {titulo:"Video Dinámico x2", cat:"Dinámicos", desc:"Cortes rápidos y efectos de sonido que le dan ritmo al video de principio a fin.", cliente:"", servicio:"Edición dinámica", video:"https://www.youtube.com/shorts/ZSgqDi63uH4", cover:""},
   {titulo:"Video Recap", cat:"Marketing", desc:"Junto lo mejor en un video corto y con ritmo, para que se entienda de un vistazo.", cliente:"", servicio:"Video marketing", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
   {titulo:"Video Storytelling", cat:"Storytelling", desc:"Una historia con inicio, desarrollo y cierre, apoyada en música y efectos para que se sienta.", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
