@@ -82,12 +82,31 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 
 .about,.contact,.cats{max-width:1200px;margin:auto;padding:60px 24px;border-top:1px solid var(--line)}
 .cats,.about{position:relative;isolation:isolate}
-.cats::before,.cats::after,.about::before,.about::after{content:"";position:absolute;width:55vmax;height:55vmax;margin:-27.5vmax 0 0 -27.5vmax;border-radius:50%;filter:blur(90px);z-index:-1;pointer-events:none}
-.cats::before,.about::before{background:radial-gradient(circle,rgba(225,11,31,.65) 0%,transparent 72%);animation:orbTLBR 9s ease-in-out infinite alternate}
-.cats::after,.about::after{background:radial-gradient(circle,rgba(225,11,31,.5) 0%,transparent 72%);animation:orbBRTL 11s ease-in-out infinite alternate;animation-delay:-2s}
+.about::before,.about::after{content:"";position:absolute;width:55vmax;height:55vmax;margin:-27.5vmax 0 0 -27.5vmax;border-radius:50%;filter:blur(90px);z-index:-1;pointer-events:none}
+.about::before{background:radial-gradient(circle,rgba(225,11,31,.65) 0%,transparent 72%);animation:orbTLBR 9s ease-in-out infinite alternate}
+.about::after{background:radial-gradient(circle,rgba(225,11,31,.5) 0%,transparent 72%);animation:orbBRTL 11s ease-in-out infinite alternate;animation-delay:-2s}
 @keyframes orbTLBR{0%{top:0%;left:0%}100%{top:100%;left:100%}}
 @keyframes orbBRTL{0%{top:100%;left:100%}100%{top:0%;left:0%}}
-@media (prefers-reduced-motion:reduce){.cats::before,.cats::after,.about::before,.about::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.about::before,.about::after{animation:none}}
+
+/* Trabajos: "células" que se desprenden de un punto central y se alejan, como mitosis */
+.cells{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.cells span{position:absolute;top:38%;left:50%;width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;border-radius:50%;background:radial-gradient(circle,rgba(225,11,31,.6) 0%,rgba(225,11,31,.25) 55%,transparent 75%);filter:blur(26px);opacity:0;animation:cellBud 7s ease-in-out infinite}
+.cells span:nth-child(1){--tx:-34vw;--ty:-16vh;animation-delay:0s}
+.cells span:nth-child(2){--tx:30vw;--ty:-20vh;animation-delay:.8s}
+.cells span:nth-child(3){--tx:-22vw;--ty:28vh;animation-delay:1.6s}
+.cells span:nth-child(4){--tx:36vw;--ty:22vh;animation-delay:2.4s}
+.cells span:nth-child(5){--tx:4vw;--ty:-32vh;animation-delay:3.2s}
+.cells span:nth-child(6){--tx:-40vw;--ty:6vh;animation-delay:4s}
+.cells span:nth-child(7){--tx:14vw;--ty:34vh;animation-delay:4.8s}
+.cells span:nth-child(8){--tx:40vw;--ty:-4vh;animation-delay:5.6s}
+@keyframes cellBud{
+  0%{transform:translate(0,0) scale(.15);opacity:0}
+  12%{opacity:.85;transform:translate(calc(var(--tx)*.15),calc(var(--ty)*.15)) scale(.5)}
+  55%{opacity:.55;transform:translate(calc(var(--tx)*.7),calc(var(--ty)*.7)) scale(1)}
+  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.35)}
+}
+@media (prefers-reduced-motion:reduce){.cells span{animation:none;opacity:0}}
 .about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:0 0 6px rgba(255,255,255,.4),0 0 16px rgba(255,255,255,.18)}
 .cats h2{font-size:2.3rem}
 .eyebrow{display:block;color:var(--red);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin-bottom:12px}
