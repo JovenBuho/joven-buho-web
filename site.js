@@ -229,10 +229,12 @@ function initGrid(fixedCat,limit){
   spans.forEach(s=>{
     const start=edgePoint();
     s.style.top=start.top+"%"; s.style.left=start.left+"%";
+    let entered=false;
     function next(){
       const p=offCenterPoint();
       const op=.15+Math.random()*.4, scale=.55+Math.random()*.6;
-      const dur=2.5+Math.random()*3.5;
+      const dur=entered?(7+Math.random()*9):(1.4+Math.random()*1.2);
+      entered=true;
       s.style.transition=`top ${dur}s ease-in-out,left ${dur}s ease-in-out,opacity ${dur}s ease-in-out,transform ${dur}s ease-in-out`;
       s.style.top=p.top+"%"; s.style.left=p.left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
       setTimeout(next, dur*1000*(.9+Math.random()*.3));
