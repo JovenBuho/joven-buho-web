@@ -172,7 +172,7 @@ function thumb(p){
 
 const revealIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");revealIO.unobserve(e.target)}}),{threshold:.15});
 function revealObserve(){document.querySelectorAll(".reveal:not(.in)").forEach(el=>revealIO.observe(el))}
-document.querySelectorAll("section.reveal").forEach(el=>revealIO.observe(el));
+document.querySelectorAll(".reveal").forEach(el=>revealIO.observe(el));
 
 /* Grid de proyectos: fixedCat="Dinámicos" fija la categoría (sin botones de filtro), null muestra todo con filtros */
 function initGrid(fixedCat){
