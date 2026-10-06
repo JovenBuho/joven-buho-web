@@ -223,3 +223,9 @@ a.eyebrow:hover{text-decoration:underline}
   .catcard p{font-size:.85rem;line-height:1.4}
 }
 .about p+p{margin-top:16px}
+
+/* Botón principal del hero: respira junto con su neón */
+.hero .cta.primary{animation:ctaBreath 3.2s ease-in-out infinite}
+.hero .cta.primary:hover{animation:none}
+@keyframes ctaBreath{0%,100%{transform:scale(1);box-shadow:0 0 8px 0 rgba(225,11,31,.45),0 0 18px 2px rgba(225,11,31,.25)}50%{transform:scale(1.045);box-shadow:0 0 14px 3px rgba(225,11,31,.95),0 0 38px 10px rgba(225,11,31,.5)}}
+@media (prefers-reduced-motion:reduce){.hero .cta.primary{animation:none}}
