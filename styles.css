@@ -82,7 +82,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 
 .about,.contact,.cats{max-width:1200px;margin:auto;padding:60px 24px;border-top:1px solid var(--line)}
 .cats,.about{position:relative;isolation:isolate}
-.cats::before,.cats::after,.about::before,.about::after{content:"";position:absolute;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;filter:blur(50px);z-index:-1;pointer-events:none}
+.cats::before,.cats::after,.about::before,.about::after{content:"";position:absolute;width:640px;height:640px;margin:-320px 0 0 -320px;border-radius:50%;filter:blur(80px);z-index:-1;pointer-events:none}
 .cats::before,.about::before{background:radial-gradient(circle,rgba(225,11,31,.65) 0%,transparent 72%);animation:orbTLBR 9s ease-in-out infinite alternate}
 .cats::after,.about::after{background:radial-gradient(circle,rgba(225,11,31,.5) 0%,transparent 72%);animation:orbBRTL 11s ease-in-out infinite alternate;animation-delay:-2s}
 @keyframes orbTLBR{0%{top:0%;left:0%}100%{top:100%;left:100%}}
