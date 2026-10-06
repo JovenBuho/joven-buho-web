@@ -4,12 +4,13 @@ const MENSAJE  = "Hola Joven Búho, vi tu portafolio y quiero cotizar edición d
 
 const PROYECTOS = [
   {titulo:"Mente Humana", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://vimeo.com/1044362907", cover:"https://i.vimeocdn.com/video/1967745909-03a827b3b9d240c5d5143bb31c34709b034624ccabd5e4d17ecf9b1dc93855ea-d_640?region=us"},
+  {titulo:"La alcancía", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"videos/el-milagro.mp4", cover:"videos/el-milagro.jpg"},
   {titulo:"Video Dinámico x2", cat:"Dinámicos", desc:"Cortes rápidos y efectos de sonido que le dan ritmo al video de principio a fin.", cliente:"", servicio:"Edición dinámica", video:"https://www.youtube.com/shorts/ZSgqDi63uH4", cover:""},
   {titulo:"Video Recap", cat:"Marketing", desc:"Junto lo mejor en un video corto y con ritmo, para que se entienda de un vistazo.", cliente:"", servicio:"Video marketing", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
   {titulo:"Video SPÁ", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://vimeo.com/1233510938", cover:"https://i.vimeocdn.com/video/2209196917-f8885a026a40d17c6afa17a2775598a2edd61e9c0193cae32d9ac53dbe8fe126-d_640?region=us"},
-  {titulo:"Video Top 3", cat:"Marketing", desc:"", cliente:"", servicio:"Marketing", video:"https://vimeo.com/1233512210", cover:"https://i.vimeocdn.com/video/2209199491-314cc0ff7171ecfae7ffeac001e16930d3a1fa1700972ffd434bfb0fb075f882-d_640?region=us"},
-  {titulo:"Video Storytelling", cat:"Storytelling", desc:"Una historia con inicio, desarrollo y cierre, apoyada en música y efectos para que se sienta.", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
-  {titulo:"Video Institucional", cat:"Institucionales", desc:"Ritmo constante y cuidado en el tono, para un mensaje que representa a una organización.", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/ML2F9F2Jk4s", cover:""},
+  {titulo:"Top 3 para tu cabello", cat:"Marketing", desc:"", cliente:"", servicio:"Marketing", video:"https://vimeo.com/1233512210", cover:"https://i.vimeocdn.com/video/2209199491-314cc0ff7171ecfae7ffeac001e16930d3a1fa1700972ffd434bfb0fb075f882-d_640?region=us"},
+  {titulo:"Ruta en cuatrimoto", cat:"Storytelling", desc:"Una historia con inicio, desarrollo y cierre, apoyada en música y efectos para que se sienta.", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
+  {titulo:"Calistenia en Envigado", cat:"Institucionales", desc:"Ritmo constante y cuidado en el tono, para un mensaje que representa a una organización.", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/ML2F9F2Jk4s", cover:""},
   {titulo:"Video Político", cat:"Institucionales", desc:"Un mensaje directo a cámara, con una edición limpia que mantiene el tono serio y deja hablar a la persona.", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/8mVFNdI8nTw", cover:""}
 ];
 /* =================================================== */
@@ -211,7 +212,7 @@ function initGrid(fixedCat,limit){
   $("#grid").addEventListener("click",e=>{
     const c=e.target.closest(".card"); if(!c) return; opener=c;
     const p=PROYECTOS[c.dataset.i], src=embed(p.video);
-    $("#player").innerHTML=src?`<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<div style="height:100%;display:grid;place-items:center;color:#666">Video próximamente</div>`;
+    $("#player").innerHTML=/\.mp4$/i.test(p.video||"")?`<video src="${p.video}" poster="${p.cover||""}" controls autoplay playsinline></video>`:src?`<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<div style="height:100%;display:grid;place-items:center;color:#666">Video próximamente</div>`;
     $("#mTitle").textContent=p.titulo; $("#mDesc").textContent=p.desc; $("#mDesc").hidden=!p.desc;
     $("#mMeta").innerHTML=(p.cliente?`<div><b>Cliente</b>${p.cliente}</div>`:"")+`<div><b>Servicio</b>${p.servicio}</div><div><b>Categoría</b>${p.cat}</div>`;
     if($("#mCta")) $("#mCta").href=wa+encodeURIComponent(" Me interesó: "+p.titulo);
