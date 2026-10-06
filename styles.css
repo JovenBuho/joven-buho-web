@@ -106,6 +106,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .contact p.fine{font-size:.8rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;max-width:720px}
 .stats>div{background:linear-gradient(155deg,rgba(225,11,31,.1),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 20px}
+.stats>div:only-child{grid-column:1/-1}
 .stats b{font-size:1.8rem;color:var(--red);display:block;line-height:1.2;text-shadow:0 0 8px rgba(225,11,31,.5)}
 .stats span{color:#fff;font-size:.85rem}
 .contact .stats{margin-inline:auto;text-align:center}
