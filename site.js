@@ -62,27 +62,45 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     {text:"\n",cls:null},
     {text:"tu próximo",cls:"white-neon"},
     {text:"\n",cls:null},
-    {text:"editor de video.",cls:"accent"}
+    {text:"editor de video.",cls:"white-neon",underline:true}
   ];
+  el.classList.remove("done");
   el.innerHTML='<span class="type-cursor typing"></span>';
   const cursor=el.querySelector(".type-cursor");
   let si=0,ci=0;
   function tick(){
-    if(si>=segments.length){ cursor.classList.remove("typing"); return; }
+    if(si>=segments.length){ cursor.classList.remove("typing"); el.classList.add("done"); return; }
     const seg=segments[si];
     if(seg.text==="\n"){
       el.insertBefore(document.createElement("br"),cursor);
       si++; ci=0;
       return setTimeout(tick,120);
     }
-    let span=el.querySelector(`span[data-seg="${si}"]`);
-    if(!span){
-      span=document.createElement("span");
-      span.className=seg.cls;
-      span.dataset.seg=si;
-      el.insertBefore(span,cursor);
+    let host=el.querySelector(`span[data-seg="${si}"]`);
+    let textTarget=host;
+    if(!host){
+      if(seg.underline){
+        host=document.createElement("span");
+        host.className="accent-line";
+        host.dataset.seg=si;
+        textTarget=document.createElement("span");
+        textTarget.className=seg.cls;
+        host.appendChild(textTarget);
+        const underline=document.createElement("span");
+        underline.className="hero-underline";
+        underline.setAttribute("aria-hidden","true");
+        host.appendChild(underline);
+      } else {
+        host=document.createElement("span");
+        host.className=seg.cls;
+        host.dataset.seg=si;
+        textTarget=host;
+      }
+      el.insertBefore(host,cursor);
+    } else if(seg.underline){
+      textTarget=host.firstChild;
     }
-    span.textContent+=seg.text[ci];
+    textTarget.textContent+=seg.text[ci];
     ci++;
     if(ci>=seg.text.length){ si++; ci=0; }
     setTimeout(tick, 22+Math.random()*18);
