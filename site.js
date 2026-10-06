@@ -6,7 +6,7 @@ const PROYECTOS = [
   {titulo:"Mente Humana", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://vimeo.com/1044362907", cover:"https://i.vimeocdn.com/video/1967745909-03a827b3b9d240c5d5143bb31c34709b034624ccabd5e4d17ecf9b1dc93855ea-d_640?region=us"},
   {titulo:"La alcancía", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"videos/el-milagro.mp4", cover:"videos/el-milagro.jpg"},
   {titulo:"Un día en la feria", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://www.youtube.com/shorts/ZSgqDi63uH4", cover:""},
-  {titulo:"Recap del evento", cat:"Marketing", desc:"", cliente:"", servicio:"Video marketing", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
+  {titulo:"Recap del evento", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
   {titulo:"Un día de spa", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://vimeo.com/1233510938", cover:"https://i.vimeocdn.com/video/2209196917-f8885a026a40d17c6afa17a2775598a2edd61e9c0193cae32d9ac53dbe8fe126-d_640?region=us"},
   {titulo:"Top 3 para tu cabello", cat:"Marketing", desc:"", cliente:"", servicio:"Marketing", video:"https://vimeo.com/1233512210", cover:"https://i.vimeocdn.com/video/2209199491-314cc0ff7171ecfae7ffeac001e16930d3a1fa1700972ffd434bfb0fb075f882-d_640?region=us"},
   {titulo:"Ruta en cuatrimoto", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
