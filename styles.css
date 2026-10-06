@@ -110,6 +110,8 @@ footer{text-align:center;color:var(--mut);font-size:.8rem;padding:30px;border-to
 .catgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
 .catcard{background:linear-gradient(155deg,rgba(18,6,6,.85),rgba(16,16,16,.9));border:1px solid rgba(225,11,31,.28);border-radius:18px;padding:18px 26px 20px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);transition:.25s}
 .catcard:hover{border-color:rgba(225,11,31,.7);background:linear-gradient(155deg,rgba(24,8,8,.9),rgba(20,20,20,.95));transform:translateY(-4px);box-shadow:0 0 16px 2px rgba(225,11,31,.35)}
+.catcard[href="dinamicos.html"]{transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .25s,background .25s,box-shadow .25s}
+.catcard[href="dinamicos.html"]:hover{transform:translateY(-6px) scale(1.015)}
 .catcard h3{font-size:1.25rem;margin-bottom:8px;color:#fff}
 .cat-top{display:flex;justify-content:space-between;align-items:center}
 .cat-n{color:var(--red);font-size:.78rem;font-weight:600;letter-spacing:.14em}
