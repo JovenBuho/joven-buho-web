@@ -207,3 +207,20 @@ function initGrid(fixedCat,limit){
 (()=>{const f=location.pathname.split("/").pop()||"index.html";
   const t=["trabajos.html","dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
   if(t) document.querySelectorAll(".navlinks a").forEach(a=>{if(a.getAttribute("href")===t)a.setAttribute("aria-current","page")});})();
+
+/* Células de fondo en Trabajos: cada una elige un destino al azar y, al llegar, elige otro — nunca repiten el mismo recorrido */
+(function cellsDrift(){
+  const spans=[...document.querySelectorAll(".cells span")];
+  if(!spans.length || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  spans.forEach(s=>{
+    function next(){
+      const top=6+Math.random()*88, left=6+Math.random()*88;
+      const op=.15+Math.random()*.4, scale=.55+Math.random()*.6;
+      const dur=7+Math.random()*9;
+      s.style.transition=`top ${dur}s ease-in-out,left ${dur}s ease-in-out,opacity ${dur}s ease-in-out,transform ${dur}s ease-in-out`;
+      s.style.top=top+"%"; s.style.left=left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
+      setTimeout(next, dur*1000*(.9+Math.random()*.3));
+    }
+    setTimeout(next, Math.random()*4500);
+  });
+})();
