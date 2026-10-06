@@ -90,7 +90,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 @media (prefers-reduced-motion:reduce){.about::before,.about::after{animation:none}}
 
 /* Trabajos: "células" que se desprenden de un punto central y se alejan, como mitosis */
-.cells{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.screens .screen>.cells{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;padding:0;margin:0;width:100%;height:100%}
 .cells span{position:absolute;width:16vmax;height:16vmax;margin:-8vmax 0 0 -8vmax;border-radius:50%;background:radial-gradient(circle,rgba(225,11,31,.55) 0%,rgba(225,11,31,.22) 55%,transparent 75%);filter:blur(26px)}
 .cells span:nth-child(1){animation:cellWander1 34s ease-in-out infinite;animation-delay:-2s}
 .cells span:nth-child(2){width:12vmax;height:12vmax;margin:-6vmax 0 0 -6vmax;animation:cellWander2 29s ease-in-out infinite;animation-delay:-11s}
