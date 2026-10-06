@@ -135,9 +135,19 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     screens.forEach((s,i)=>s.classList.toggle("active",i===idx));
     dots.forEach((d,i)=>d.classList.toggle("on",i===idx));
     nextWrap.classList.toggle("hide",idx===screens.length-1);
+    updateNext();
     document.dispatchEvent(new CustomEvent("screenchange",{detail:{idx}}));
     try{ sessionStorage.setItem("screenIdx",idx); }catch(e){}
   }
+  /* La flecha solo aparece al llegar al final de la sección, para no tapar contenido al hacer scroll */
+  function updateNext(){
+    const sc=screens[idx];
+    nextWrap.classList.toggle("hide-scroll",sc.scrollTop+sc.clientHeight<sc.scrollHeight-40);
+  }
+  screens.forEach(s=>s.addEventListener("scroll",()=>{ if(s===screens[idx]) updateNext(); },{passive:true}));
+  window.addEventListener("resize",updateNext);
+  window.addEventListener("load",updateNext);
+  document.addEventListener("gridpaint",updateNext);
   dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
   nextBtn.addEventListener("click",()=>show(idx+1));
   const modalOpen=()=>document.querySelector(".modal.open");
@@ -205,6 +215,7 @@ function initGrid(fixedCat,limit){
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:p.cat===activa).slice(0,limit||undefined);
     $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}${p.cover?'':';background-size:316% auto'}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
     $("#grid").dataset.n=lista.length;
+    document.dispatchEvent(new Event("gridpaint"));
     if(!fixedCat && NOTAS[activa]) $("#grid").insertAdjacentHTML("beforeend",`<aside class="postdata"><b>P. D.</b><p>${NOTAS[activa]}</p></aside>`);
     revealObserve();
   }

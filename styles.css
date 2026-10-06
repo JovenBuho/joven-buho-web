@@ -267,3 +267,56 @@ a.eyebrow:hover{text-decoration:underline}
 .postdata b{display:block;color:var(--red);font-size:.72rem;letter-spacing:.18em;margin-bottom:6px}
 .postdata p{margin:0;color:#d8d8d8;font-size:.9rem;line-height:1.5;font-style:italic}
 @media (max-width:640px){.postdata{grid-column:1/-1;max-width:none}}
+
+/* Títulos de "Así funciona" */
+.steps-title,.contact .steps-title{margin-top:56px;font-size:1.3rem}
+.screen-next-wrap.hide-scroll{opacity:0;pointer-events:none}
+.screen-next-wrap{transition:opacity .3s}
+
+/* ===== Ajustes de proporción para móvil ===== */
+@media (max-width:640px){
+  /* Puntos de navegación dentro del margen, sin pisar las tarjetas */
+  .screen-dots{right:6px;gap:11px}
+  .screen-dots button{width:7px;height:7px}
+  /* Flecha más compacta y más abajo */
+  .screen-next-wrap{bottom:12px}
+  .screen-next{width:40px;height:40px;font-size:1rem}
+  .screens .screen>*{padding-left:20px;padding-right:20px}
+
+  /* Portafolio del home: 2 columnas, como en Trabajos */
+  .works .page-hero{padding:8px 4px 0}
+  .works .page-hero p{font-size:.88rem;line-height:1.45}
+  .works .filters{gap:8px;padding:0 0 16px;margin-top:12px}
+  .works .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0}
+  .filters button{padding:9px 16px;font-size:.82rem}
+  .card .info{padding:10px 12px 12px}
+  .card .info h3{font-size:.86rem;line-height:1.25}
+  .tag{margin-top:6px;font-size:.66rem}
+  .thumb::after{width:42px;height:42px;margin:-21px 0 0 -21px}
+
+  /* Sobre mí */
+  .about h2{font-size:1.65rem}
+  .about-body{padding:22px 20px}
+  .about p{font-size:1rem;line-height:1.65}
+
+  /* Contacto: pasos compactos, alineados igual que el resto */
+  .steps-title,.contact .steps-title{margin-top:32px;font-size:1.2rem}
+  .stats{gap:10px;margin-top:16px}
+  .contact .stats{text-align:left}
+  .stats>div{display:flex;align-items:center;gap:14px;padding:14px 16px}
+  .stats b{font-size:1.35rem;min-width:2.2ch}
+  .contact h2{font-size:1.65rem}
+  .contact p.fine{margin-top:24px!important}
+
+  /* Páginas internas: menos aire muerto arriba */
+  .page-hero{padding:36px 20px 20px}
+  body>.contact{padding:24px 20px 40px}
+  .cta-panel{margin:10px 16px 50px;padding:32px 20px}
+
+  /* Modal: la X no tapa el video y todo cabe en pantalla */
+  .modal{padding:64px 16px 32px}
+  .close{top:10px;right:10px;background:rgba(0,0,0,.6);z-index:2}
+  .player{height:min(58vh,520px);width:auto;max-width:100%}
+  .box h2{font-size:1.3rem;margin-top:16px}
+  .meta{gap:20px;margin-top:12px}
+}
