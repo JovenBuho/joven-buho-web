@@ -227,7 +227,7 @@ function initGrid(fixedCat,limit){
 
 /* Página activa en el menú */
 (()=>{const f=location.pathname.split("/").pop()||"index.html";
-  const t=["trabajos.html","dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
+  const t=["dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"index.html#s-trabajos":f==="contacto.html"?"contacto.html":null;
   if(t) document.querySelectorAll(".navlinks a").forEach(a=>{if(a.getAttribute("href")===t)a.setAttribute("aria-current","page")});})();
 
 /* Células de fondo en Trabajos: nacen en un borde al azar y viajan a puntos al azar, nunca en la zona central (para que no se "reúnan" todas en el medio) */
