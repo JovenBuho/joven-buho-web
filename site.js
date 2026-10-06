@@ -155,10 +155,12 @@ function initGrid(fixedCat,limit){
   let activa="Todos";
   function pintar(){
     if($("#filters") && !fixedCat){
+      $("#filters").hidden=PROYECTOS.length<=6; /* con pocos proyectos, filtrar solo agrega fricción */
       $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa)).slice(0,limit||undefined);
     $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:url('${thumb(p)}')`:''}"></div><div class="info"><h3>${p.titulo}</h3><p>${p.cliente}</p><span class="tag">${p.cat}</span></div></article>`).join("");
+    $("#grid").dataset.n=lista.length;
     revealObserve();
   }
   if($("#filters") && !fixedCat){
@@ -172,6 +174,7 @@ function initGrid(fixedCat,limit){
     $("#player").innerHTML=src?`<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<div style="height:100%;display:grid;place-items:center;color:#666">Video próximamente</div>`;
     $("#mTitle").textContent=p.titulo; $("#mDesc").textContent=p.desc;
     $("#mMeta").innerHTML=`<div><b>Cliente</b>${p.cliente}</div><div><b>Servicio</b>${p.servicio}</div><div><b>Categoría</b>${p.cat}</div>`;
+    if($("#mCta")) $("#mCta").href=wa+encodeURIComponent(" Me interesó: "+p.titulo);
     $("#modal").classList.add("open"); document.body.style.overflow="hidden"; $("#close").focus();
   });
   function cerrar(){$("#modal").classList.remove("open");$("#player").innerHTML="";document.body.style.overflow=""; if(opener) opener.focus();}
