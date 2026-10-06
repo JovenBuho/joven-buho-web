@@ -91,21 +91,23 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 
 /* Trabajos: "células" que se desprenden de un punto central y se alejan, como mitosis */
 .cells{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.cells span{position:absolute;top:38%;left:50%;width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;border-radius:50%;background:radial-gradient(circle,rgba(225,11,31,.6) 0%,rgba(225,11,31,.25) 55%,transparent 75%);filter:blur(26px);opacity:0;animation:cellBud 7s ease-in-out infinite}
-.cells span:nth-child(1){--tx:-34vw;--ty:-16vh;animation-delay:0s}
-.cells span:nth-child(2){--tx:30vw;--ty:-20vh;animation-delay:.8s}
-.cells span:nth-child(3){--tx:-22vw;--ty:28vh;animation-delay:1.6s}
-.cells span:nth-child(4){--tx:36vw;--ty:22vh;animation-delay:2.4s}
-.cells span:nth-child(5){--tx:4vw;--ty:-32vh;animation-delay:3.2s}
-.cells span:nth-child(6){--tx:-40vw;--ty:6vh;animation-delay:4s}
-.cells span:nth-child(7){--tx:14vw;--ty:34vh;animation-delay:4.8s}
-.cells span:nth-child(8){--tx:40vw;--ty:-4vh;animation-delay:5.6s}
-@keyframes cellBud{
-  0%{transform:translate(0,0) scale(.15);opacity:0}
-  12%{opacity:.85;transform:translate(calc(var(--tx)*.15),calc(var(--ty)*.15)) scale(.5)}
-  55%{opacity:.55;transform:translate(calc(var(--tx)*.7),calc(var(--ty)*.7)) scale(1)}
-  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.35)}
-}
+.cells span{position:absolute;width:16vmax;height:16vmax;margin:-8vmax 0 0 -8vmax;border-radius:50%;background:radial-gradient(circle,rgba(225,11,31,.55) 0%,rgba(225,11,31,.22) 55%,transparent 75%);filter:blur(26px)}
+.cells span:nth-child(1){animation:cellWander1 34s ease-in-out infinite;animation-delay:-2s}
+.cells span:nth-child(2){width:12vmax;height:12vmax;margin:-6vmax 0 0 -6vmax;animation:cellWander2 29s ease-in-out infinite;animation-delay:-11s}
+.cells span:nth-child(3){animation:cellWander3 38s ease-in-out infinite;animation-delay:-19s}
+.cells span:nth-child(4){width:20vmax;height:20vmax;margin:-10vmax 0 0 -10vmax;animation:cellWander4 31s ease-in-out infinite;animation-delay:-6s}
+.cells span:nth-child(5){width:11vmax;height:11vmax;margin:-5.5vmax 0 0 -5.5vmax;animation:cellWander5 26s ease-in-out infinite;animation-delay:-14s}
+.cells span:nth-child(6){animation:cellWander6 36s ease-in-out infinite;animation-delay:-22s}
+.cells span:nth-child(7){width:14vmax;height:14vmax;margin:-7vmax 0 0 -7vmax;animation:cellWander7 33s ease-in-out infinite;animation-delay:-3s}
+.cells span:nth-child(8){width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;animation:cellWander8 28s ease-in-out infinite;animation-delay:-17s}
+@keyframes cellWander1{0%{top:8%;left:12%;opacity:.3}22%{top:62%;left:28%;opacity:.55}47%{top:34%;left:70%;opacity:.4}71%{top:80%;left:85%;opacity:.5}100%{top:8%;left:12%;opacity:.3}}
+@keyframes cellWander2{0%{top:70%;left:80%;opacity:.4}26%{top:20%;left:60%;opacity:.5}53%{top:45%;left:10%;opacity:.3}79%{top:85%;left:35%;opacity:.5}100%{top:70%;left:80%;opacity:.4}}
+@keyframes cellWander3{0%{top:40%;left:50%;opacity:.3}18%{top:10%;left:85%;opacity:.5}44%{top:75%;left:60%;opacity:.4}68%{top:55%;left:15%;opacity:.5}100%{top:40%;left:50%;opacity:.3}}
+@keyframes cellWander4{0%{top:85%;left:20%;opacity:.4}24%{top:50%;left:5%;opacity:.3}50%{top:15%;left:40%;opacity:.5}77%{top:60%;left:75%;opacity:.4}100%{top:85%;left:20%;opacity:.4}}
+@keyframes cellWander5{0%{top:15%;left:65%;opacity:.35}30%{top:55%;left:90%;opacity:.5}58%{top:90%;left:50%;opacity:.3}82%{top:30%;left:25%;opacity:.5}100%{top:15%;left:65%;opacity:.35}}
+@keyframes cellWander6{0%{top:60%;left:45%;opacity:.3}20%{top:90%;left:10%;opacity:.5}48%{top:25%;left:20%;opacity:.4}73%{top:10%;left:60%;opacity:.5}100%{top:60%;left:45%;opacity:.3}}
+@keyframes cellWander7{0%{top:30%;left:30%;opacity:.4}27%{top:75%;left:55%;opacity:.3}55%{top:50%;left:90%;opacity:.5}80%{top:5%;left:70%;opacity:.4}100%{top:30%;left:30%;opacity:.4}}
+@keyframes cellWander8{0%{top:95%;left:60%;opacity:.3}25%{top:65%;left:25%;opacity:.5}52%{top:5%;left:50%;opacity:.4}76%{top:40%;left:95%;opacity:.5}100%{top:95%;left:60%;opacity:.3}}
 @media (prefers-reduced-motion:reduce){.cells span{animation:none;opacity:0}}
 .about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:0 0 6px rgba(255,255,255,.4),0 0 16px rgba(255,255,255,.18)}
 .cats h2{font-size:2.3rem}
