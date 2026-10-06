@@ -90,8 +90,8 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .link-all span{display:inline-block;transition:transform .25s}
 .link-all:hover{border-color:var(--red)}
 .link-all:hover span{transform:translateX(4px)}
-.cats-head .link-all{border:1px solid rgba(225,11,31,.55);border-radius:999px;padding:12px 22px;background:rgba(3,2,2,.9);color:#fff;box-shadow:0 0 14px 1px rgba(225,11,31,.4),0 0 28px 4px rgba(225,11,31,.2);transition:transform .25s,box-shadow .25s,background .25s,border-color .25s}
-.cats-head .link-all:hover{border-color:rgba(225,11,31,.9);background:rgba(6,3,3,.95);box-shadow:0 0 18px 2px rgba(225,11,31,.6),0 0 40px 8px rgba(225,11,31,.35);transform:translateY(-2px)}
+.cats-head .link-all{border:1px solid var(--red);border-radius:999px;padding:12px 22px;background:rgba(225,11,31,.12);box-shadow:var(--glow-r);transition:transform .25s,box-shadow .25s,background .25s}
+.cats-head .link-all:hover{background:rgba(225,11,31,.22);box-shadow:0 0 14px 2px rgba(225,11,31,1),0 0 36px 8px rgba(225,11,31,.6);transform:translateY(-2px)}
 .cats-sub{color:#fff;max-width:60ch;font-size:1.05rem}
 .about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:start}
 .about p,.contact p{color:#fff;max-width:62ch;line-height:1.7;font-size:1.05rem}
