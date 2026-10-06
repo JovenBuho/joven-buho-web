@@ -78,7 +78,7 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .page-hero p{color:#fff;max-width:60ch;margin:18px auto 0;font-size:1.02rem}
 
 .filters{max-width:1200px;margin:20px auto 0;padding:0 24px 24px;display:flex;gap:10px;flex-wrap:wrap}
-.filters button{background:none;border:1px solid var(--line);color:#fff;padding:8px 18px;border-radius:999px;cursor:pointer;font-size:.85rem;font-weight:600;text-shadow:var(--neon-w);transition:border-color .3s,box-shadow .3s,background .3s}
+.filters button{background:none;border:1px solid var(--line);color:#fff;padding:8px 18px;border-radius:999px;cursor:pointer;font-size:.85rem;font-weight:600;transition:border-color .3s,box-shadow .3s,background .3s}
 .filters button.on,.filters button:hover{background:rgba(225,11,31,.12);border-color:var(--red);box-shadow:var(--glow-r)}
 .grid{max-width:1200px;margin:auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
 .card{background:linear-gradient(155deg,rgba(225,11,31,.1),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.14);border-radius:18px;overflow:hidden;cursor:pointer;backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);transition:.25s}
@@ -87,9 +87,9 @@ h1 .white-neon{text-shadow:var(--neon-w)}
 .thumb::after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;font-size:2.2rem;color:#fff;background:rgba(0,0,0,.35);opacity:0;transition:.25s}
 .card:hover .thumb::after{opacity:1}
 .info{padding:16px 18px}
-.info h3{font-size:1.05rem;text-shadow:var(--neon-w)}
+.info h3{font-size:1.05rem}
 .info p{color:rgba(255,255,255,.78);font-size:.88rem;margin-top:4px}
-.tag{display:inline-block;margin-top:10px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red);text-shadow:var(--neon-r)}
+.tag{display:inline-block;margin-top:10px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
 
 .about,.contact,.cats{max-width:1200px;margin:auto;padding:60px 24px;border-top:1px solid var(--line)}
 .about h2,.contact h2,.cats h2{font-size:1.8rem;margin-bottom:16px;text-shadow:var(--neon-w)}
