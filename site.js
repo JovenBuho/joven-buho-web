@@ -252,7 +252,7 @@ function initGrid(fixedCat,limit){
       const p=offCenterPoint();
       const op=.15+Math.random()*.4, scale=.55+Math.random()*.6;
       const dur=entered?(7+Math.random()*9):(1.4+Math.random()*1.2);
-      const ease=entered?"ease-in-out":"cubic-bezier(.08,.75,.15,1)";
+      const ease=entered?"linear":"cubic-bezier(.08,.75,.15,1)";
       entered=true;
       s.style.transition=`top ${dur}s ${ease},left ${dur}s ${ease},opacity ${dur}s ${ease},transform ${dur}s ${ease}`;
       s.style.top=p.top+"%"; s.style.left=p.left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
