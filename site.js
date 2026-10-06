@@ -8,7 +8,7 @@ const PROYECTOS = [
   {titulo:"Un día en la feria", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://www.youtube.com/shorts/ZSgqDi63uH4", cover:""},
   {titulo:"Recap del evento", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/VudrWDQW3kE", cover:""},
   {titulo:"Un día de spa", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://vimeo.com/1233510938", cover:"https://i.vimeocdn.com/video/2209196917-f8885a026a40d17c6afa17a2775598a2edd61e9c0193cae32d9ac53dbe8fe126-d_640?region=us"},
-  {titulo:"Top 3 para tu cabello", cat:"Marketing", desc:"", cliente:"", servicio:"Marketing", video:"https://vimeo.com/1233512210", cover:"https://i.vimeocdn.com/video/2209199491-314cc0ff7171ecfae7ffeac001e16930d3a1fa1700972ffd434bfb0fb075f882-d_640?region=us"},
+  {titulo:"Top 3 para tu cabello", cat:"Dinámicos", desc:"", cliente:"", servicio:"Edición dinámica", video:"https://vimeo.com/1233512210", cover:"https://i.vimeocdn.com/video/2209199491-314cc0ff7171ecfae7ffeac001e16930d3a1fa1700972ffd434bfb0fb075f882-d_640?region=us"},
   {titulo:"Ruta en cuatrimoto", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"https://www.youtube.com/shorts/x7cQK1WceZc", cover:""},
   {titulo:"El caso del abogado", cat:"Storytelling", desc:"", cliente:"", servicio:"Storytelling", video:"videos/caso-abogado.mp4", cover:"videos/caso-abogado.jpg"},
   {titulo:"Calistenia en Envigado", cat:"Institucionales", desc:"", cliente:"", servicio:"Video institucional", video:"https://www.youtube.com/shorts/ML2F9F2Jk4s", cover:""},
@@ -230,7 +230,7 @@ function initGrid(fixedCat,limit){
 
 /* Página activa en el menú */
 (()=>{const f=location.pathname.split("/").pop()||"index.html";
-  const t=["trabajos.html","dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
+  const t=["trabajos.html","dinamicos.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
   if(t) document.querySelectorAll(".navlinks a").forEach(a=>{if(a.getAttribute("href")===t)a.setAttribute("aria-current","page")});})();
 
 /* Células de fondo en Trabajos: nacen en un borde al azar y viajan a puntos al azar, nunca en la zona central (para que no se "reúnan" todas en el medio) */
