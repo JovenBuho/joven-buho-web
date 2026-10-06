@@ -279,3 +279,5 @@ a.eyebrow:hover{text-decoration:underline}
 }
 
 .box .cta{justify-self:start}
+
+.screens .screen>.works{max-width:none;padding-top:0;padding-bottom:96px}
