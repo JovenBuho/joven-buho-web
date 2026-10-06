@@ -199,7 +199,7 @@ function initGrid(fixedCat,limit){
       $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:p.cat===activa).slice(0,limit||undefined);
-    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
+    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}${p.cover?'':';background-size:316% auto'}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
     $("#grid").dataset.n=lista.length;
     revealObserve();
   }
