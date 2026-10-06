@@ -286,3 +286,10 @@ a.eyebrow:hover{text-decoration:underline}
 .works .page-hero p{margin-top:10px;font-size:.95rem}
 .works .filters{margin-top:14px;padding-bottom:18px}
 .works .grid{grid-template-columns:repeat(auto-fit,minmax(200px,240px))}
+
+/* Filtros: que se vean como botones */
+.filters button{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.35);padding:11px 24px;font-size:.92rem;box-shadow:0 3px 0 rgba(0,0,0,.55),0 6px 14px rgba(0,0,0,.4);transition:transform .15s,border-color .2s,box-shadow .2s,background .2s}
+.filters button:hover{transform:translateY(-2px);background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08));border-color:#fff}
+.filters button:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.55)}
+.filters button.on{background:var(--red);border-color:var(--red);box-shadow:0 3px 0 #7a0610,0 0 18px rgba(225,11,31,.6)}
+.filters button.on:hover{background:var(--red)}
