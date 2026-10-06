@@ -29,15 +29,28 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     {top:"42%",left:"-10%"},
     {top:"6%",left:"-8%"}
   ];
+  function puff(pos,delay){
+    const s=document.createElement("span");
+    Object.assign(s.style,pos);
+    if(delay) s.style.animationDelay=delay+"s";
+    s.addEventListener("animationend",()=>s.remove());
+    box.appendChild(s);
+  }
+  /* humo constante por el borde del círculo; con el cursor encima sale más seguido */
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  let hover=false;
+  function ambient(){
+    const a=Math.random()*Math.PI*2;
+    puff({left:(50+50*Math.cos(a))+"%",top:(50+50*Math.sin(a))+"%",marginLeft:"-35px",marginTop:"-35px"});
+    if(hover) puff({left:(50+50*Math.cos(a+Math.PI))+"%",top:(50+50*Math.sin(a+Math.PI))+"%",marginLeft:"-35px",marginTop:"-35px"});
+    setTimeout(ambient,hover?120:550);
+  }
+  ambient();
   vis.addEventListener("mouseenter",()=>{
-    positions.forEach((pos,i)=>{
-      const s=document.createElement("span");
-      Object.assign(s.style,pos);
-      s.style.animationDelay=(i*0.16)+"s";
-      s.addEventListener("animationend",()=>s.remove());
-      box.appendChild(s);
-    });
+    hover=true;
+    positions.forEach((pos,i)=>puff(pos,i*0.16));
   });
+  vis.addEventListener("mouseleave",()=>{hover=false;});
 })();
 
 (function typewriter(){
