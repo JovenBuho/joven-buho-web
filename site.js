@@ -49,7 +49,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     {text:"\n",cls:null},
     {text:"tu próximo",cls:"white-neon"},
     {text:"\n",cls:null},
-    {text:"editor de video.",cls:"white-neon"}
+    {text:"editor de video.",cls:"accent"}
   ];
   el.innerHTML='<span class="type-cursor typing"></span>';
   const cursor=el.querySelector(".type-cursor");
