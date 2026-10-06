@@ -44,11 +44,10 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   const el=document.getElementById("typeTitle");
   if(!el || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   const segments=[
-    {text:"Edito videos",cls:"white-neon"},
+    {text:"Soy ",cls:"white-neon"},
+    {text:"Joven Búho",cls:"accent"},
     {text:"\n",cls:null},
-    {text:"que enganchan",cls:"accent"},
-    {text:"\n",cls:null},
-    {text:"desde el primer segundo.",cls:"white-neon"}
+    {text:"Editor de video.",cls:"white-neon"}
   ];
   el.innerHTML='<span class="type-cursor typing"></span>';
   const cursor=el.querySelector(".type-cursor");
