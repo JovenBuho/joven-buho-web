@@ -204,26 +204,34 @@ function initGrid(fixedCat){
   let activa="Todos";
   function pintar(){
     if($("#filters") && !fixedCat){
-      $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}">${c}</button>`).join("");
+      $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
     const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa));
-    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:url('${thumb(p)}')`:''}"></div><div class="info"><h3>${p.titulo}</h3><p>${p.cliente}</p><span class="tag">${p.cat}</span></div></article>`).join("");
+    $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:url('${thumb(p)}')`:''}"></div><div class="info"><h3>${p.titulo}</h3><p>${p.cliente}</p><span class="tag">${p.cat}</span></div></article>`).join("");
     revealObserve();
   }
   if($("#filters") && !fixedCat){
     $("#filters").addEventListener("click",e=>{const b=e.target.closest("button");if(b){activa=b.dataset.c;pintar();}});
   }
+  let opener=null;
+  $("#grid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("card")){e.preventDefault();e.target.click();}});
   $("#grid").addEventListener("click",e=>{
-    const c=e.target.closest(".card"); if(!c) return;
+    const c=e.target.closest(".card"); if(!c) return; opener=c;
     const p=PROYECTOS[c.dataset.i], src=embed(p.video);
     $("#player").innerHTML=src?`<iframe src="${src}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`:`<div style="height:100%;display:grid;place-items:center;color:#666">Video próximamente</div>`;
     $("#mTitle").textContent=p.titulo; $("#mDesc").textContent=p.desc;
     $("#mMeta").innerHTML=`<div><b>Cliente</b>${p.cliente}</div><div><b>Servicio</b>${p.servicio}</div><div><b>Categoría</b>${p.cat}</div>`;
-    $("#modal").classList.add("open"); document.body.style.overflow="hidden";
+    $("#modal").classList.add("open"); document.body.style.overflow="hidden"; $("#close").focus();
   });
-  function cerrar(){$("#modal").classList.remove("open");$("#player").innerHTML="";document.body.style.overflow="";}
+  function cerrar(){$("#modal").classList.remove("open");$("#player").innerHTML="";document.body.style.overflow=""; if(opener) opener.focus();}
+  $("#modal").setAttribute("role","dialog"); $("#modal").setAttribute("aria-modal","true"); $("#modal").setAttribute("aria-labelledby","mTitle");
   $("#close").onclick=cerrar;
   $("#modal").addEventListener("click",e=>{if(e.target.id==="modal")cerrar();});
   document.addEventListener("keydown",e=>{if(e.key==="Escape")cerrar();});
   pintar();
 }
+
+/* Página activa en el menú */
+(()=>{const f=location.pathname.split("/").pop()||"index.html";
+  const t=["trabajos.html","dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
+  if(t) document.querySelectorAll(".navlinks a").forEach(a=>{if(a.getAttribute("href")===t)a.setAttribute("aria-current","page")});})();
