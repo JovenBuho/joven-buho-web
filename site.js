@@ -191,14 +191,14 @@ document.querySelectorAll(".reveal").forEach(el=>revealIO.observe(el));
 /* Grid de proyectos: fixedCat="Dinámicos" fija la categoría (sin botones de filtro), null muestra todo con filtros */
 function initGrid(fixedCat,limit){
   if(!$("#grid")) return;
-  const cats=["Todos",...new Set(PROYECTOS.map(p=>p.cat))];
-  let activa="Todos";
+  const cats=[...new Set(PROYECTOS.map(p=>p.cat))];
+  let activa=cats[0];
   function pintar(){
     if($("#filters") && !fixedCat){
       $("#filters").hidden=PROYECTOS.length<=6; /* con pocos proyectos, filtrar solo agrega fricción */
       $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
-    const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa)).slice(0,limit||undefined);
+    const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:p.cat===activa).slice(0,limit||undefined);
     $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:${thumb(p)}`:''}"></div><div class="info"><h3>${p.titulo}</h3>${p.cliente?`<p>${p.cliente}</p>`:""}<span class="tag">${p.cat}</span></div></article>`).join("");
     $("#grid").dataset.n=lista.length;
     revealObserve();
