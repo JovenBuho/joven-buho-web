@@ -208,17 +208,33 @@ function initGrid(fixedCat,limit){
   const t=["trabajos.html","dinamicos.html","marketing.html","storytelling.html","institucionales.html"].includes(f)?"trabajos.html":f==="contacto.html"?"contacto.html":null;
   if(t) document.querySelectorAll(".navlinks a").forEach(a=>{if(a.getAttribute("href")===t)a.setAttribute("aria-current","page")});})();
 
-/* Células de fondo en Trabajos: cada una elige un destino al azar y, al llegar, elige otro — nunca repiten el mismo recorrido */
+/* Células de fondo en Trabajos: nacen en un borde al azar y viajan a puntos al azar, nunca en la zona central (para que no se "reúnan" todas en el medio) */
 (function cellsDrift(){
   const spans=[...document.querySelectorAll(".cells span")];
   if(!spans.length || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  function edgePoint(){
+    const side=Math.floor(Math.random()*4);
+    const along=Math.random()*100;
+    if(side===0) return {top:-2, left:along};
+    if(side===1) return {top:along, left:102};
+    if(side===2) return {top:102, left:along};
+    return {top:along, left:-2};
+  }
+  function offCenterPoint(){
+    let top,left;
+    do{ top=6+Math.random()*88; left=6+Math.random()*88; }
+    while(Math.abs(top-50)<22 && Math.abs(left-50)<22);
+    return {top,left};
+  }
   spans.forEach(s=>{
+    const start=edgePoint();
+    s.style.top=start.top+"%"; s.style.left=start.left+"%";
     function next(){
-      const top=6+Math.random()*88, left=6+Math.random()*88;
+      const p=offCenterPoint();
       const op=.15+Math.random()*.4, scale=.55+Math.random()*.6;
       const dur=7+Math.random()*9;
       s.style.transition=`top ${dur}s ease-in-out,left ${dur}s ease-in-out,opacity ${dur}s ease-in-out,transform ${dur}s ease-in-out`;
-      s.style.top=top+"%"; s.style.left=left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
+      s.style.top=p.top+"%"; s.style.left=p.left+"%"; s.style.opacity=op; s.style.transform=`scale(${scale})`;
       setTimeout(next, dur*1000*(.9+Math.random()*.3));
     }
     setTimeout(next, Math.random()*4500);
