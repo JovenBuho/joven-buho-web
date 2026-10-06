@@ -6,15 +6,13 @@ const PROYECTOS = [
   {titulo:"Reel para @cristian_barbosa201", cat:"Dinámicos", desc:"Cortes rápidos y precisos, con efectos de sonido que le dan ritmo al video de principio a fin.", cliente:"@cristian_barbosa201", servicio:"Edición dinámica", video:"", cover:""},
   {titulo:"Campaña para @bleiderbotero", cat:"Marketing", desc:"Transiciones suaves y gráficos animados que acompañan el mensaje de marca sin robarle protagonismo.", cliente:"@bleiderbotero", servicio:"Video marketing", video:"", cover:""},
   {titulo:"Historia para @jajajairoramirez", cat:"Storytelling", desc:"Una historia con inicio, desarrollo y cierre, apoyada en música y efectos que la hacen fácil de seguir.", cliente:"@jajajairoramirez", servicio:"Storytelling", video:"", cover:""},
-  {titulo:"Institucional — Envigado Joven", cat:"Institucionales", desc:"Ritmo constante y cuidado en el tono, manteniendo la formalidad que pide un mensaje institucional.", cliente:"@envigadojovenoficial", servicio:"Video institucional", video:"", cover:""},
-  {titulo:"Proyecto 5", cat:"Dinámicos", desc:"Descripción breve del proyecto.", cliente:"Cliente", servicio:"Edición", video:"", cover:""},
-  {titulo:"Proyecto 6", cat:"Marketing", desc:"Descripción breve del proyecto.", cliente:"Cliente", servicio:"Edición", video:"", cover:""}
+  {titulo:"Institucional — Envigado Joven", cat:"Institucionales", desc:"Ritmo constante y cuidado en el tono, manteniendo la formalidad que pide un mensaje institucional.", cliente:"@envigadojovenoficial", servicio:"Video institucional", video:"", cover:""}
 ];
 /* =================================================== */
 
 const $=s=>document.querySelector(s);
 const wa="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(MENSAJE);
-document.querySelectorAll("#waBtn").forEach(a=>a.href=wa);
+document.querySelectorAll("#waBtn,[data-wa]").forEach(a=>a.href=wa);
 if($("#y")) $("#y").textContent=new Date().getFullYear();
 
 (function hoverVapor(){
@@ -112,12 +110,13 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
 
 (function typewriter(){
   const el=document.getElementById("typeTitle");
-  if(!el) return;
+  if(!el || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   const segments=[
-    {text:"Soy ",cls:"white-neon"},
-    {text:"Joven Búho",cls:"accent"},
+    {text:"Edito videos",cls:"white-neon"},
     {text:"\n",cls:null},
-    {text:"Editor de video.",cls:"white-neon"}
+    {text:"que enganchan",cls:"accent"},
+    {text:"\n",cls:null},
+    {text:"desde el primer segundo.",cls:"white-neon"}
   ];
   el.innerHTML='<span class="type-cursor typing"></span>';
   const cursor=el.querySelector(".type-cursor");
@@ -140,7 +139,7 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
     span.textContent+=seg.text[ci];
     ci++;
     if(ci>=seg.text.length){ si++; ci=0; }
-    setTimeout(tick, 55+Math.random()*40);
+    setTimeout(tick, 22+Math.random()*18);
   }
   setTimeout(tick,300);
 })();
@@ -169,13 +168,33 @@ if($("#y")) $("#y").textContent=new Date().getFullYear();
   }
   dots.forEach((d,n)=>d.addEventListener("click",()=>show(n)));
   nextBtn.addEventListener("click",()=>show(idx+1));
+  const modalOpen=()=>document.querySelector(".modal.open");
   document.addEventListener("keydown",e=>{
+    if(modalOpen()) return;
     if(e.key==="ArrowDown"||e.key==="ArrowRight") show(idx+1);
     if(e.key==="ArrowUp"||e.key==="ArrowLeft") show(idx-1);
   });
 
+  /* Rueda y deslizamiento: cambian de pantalla solo si la pantalla activa ya no tiene más contenido que recorrer */
+  let lock=0;
+  function step(dir){
+    const sc=screens[idx], now=Date.now();
+    if(modalOpen() || now<lock) return;
+    const atEnd=sc.scrollTop+sc.clientHeight>=sc.scrollHeight-2, atTop=sc.scrollTop<=0;
+    if((dir>0&&!atEnd)||(dir<0&&!atTop)) return;
+    lock=now+700; show(idx+dir);
+  }
+  wrap.addEventListener("wheel",e=>{ if(Math.abs(e.deltaY)>30) step(e.deltaY>0?1:-1); },{passive:true});
+  let ty=null;
+  wrap.addEventListener("touchstart",e=>{ ty=e.touches[0].clientY; },{passive:true});
+  wrap.addEventListener("touchend",e=>{ if(ty===null) return; const dy=ty-e.changedTouches[0].clientY; ty=null; if(Math.abs(dy)>60) step(dy>0?1:-1); },{passive:true});
+
+  const sobre=screens.findIndex(s=>s.querySelector("#sobre"));
+  document.querySelectorAll('.navlinks a[href="index.html#sobre"]').forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); show(sobre); }));
+  document.querySelectorAll('a.logo').forEach(a=>a.addEventListener("click",e=>{ e.preventDefault(); show(0); }));
+
   if(location.hash) history.replaceState(null,"",location.pathname);
-  show(0);
+  show(window.__hash==="#sobre"?sobre:0);
   window.addEventListener("pageshow",e=>{ if(e.persisted) show(0); });
 })();
 
@@ -198,7 +217,7 @@ function revealObserve(){document.querySelectorAll(".reveal:not(.in)").forEach(e
 document.querySelectorAll(".reveal").forEach(el=>revealIO.observe(el));
 
 /* Grid de proyectos: fixedCat="Dinámicos" fija la categoría (sin botones de filtro), null muestra todo con filtros */
-function initGrid(fixedCat){
+function initGrid(fixedCat,limit){
   if(!$("#grid")) return;
   const cats=["Todos",...new Set(PROYECTOS.map(p=>p.cat))];
   let activa="Todos";
@@ -206,7 +225,7 @@ function initGrid(fixedCat){
     if($("#filters") && !fixedCat){
       $("#filters").innerHTML=cats.map(c=>`<button class="${c===activa?'on':''}" data-c="${c}" aria-pressed="${c===activa}">${c}</button>`).join("");
     }
-    const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa));
+    const lista=PROYECTOS.map((p,i)=>({p,i})).filter(({p})=>fixedCat?p.cat===fixedCat:(activa==="Todos"||p.cat===activa)).slice(0,limit||undefined);
     $("#grid").innerHTML=lista.map(({p,i},n)=>`<article class="card reveal" tabindex="0" role="button" aria-label="Ver proyecto: ${p.titulo}" style="transition-delay:${Math.min(n,6)*70}ms" data-i="${i}"><div class="thumb" style="${thumb(p)?`background-image:url('${thumb(p)}')`:''}"></div><div class="info"><h3>${p.titulo}</h3><p>${p.cliente}</p><span class="tag">${p.cat}</span></div></article>`).join("");
     revealObserve();
   }
