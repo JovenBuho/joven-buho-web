@@ -1,5 +1,5 @@
 /* ============ EDITA SOLO ESTA SECCIÓN ============ */
-const WHATSAPP = "573016103030"; // Joven Búho — confirma que este es tu número actual
+const WHATSAPP = "573016103083"; // Joven Búho
 const MENSAJE  = "Hola Joven Búho, vi tu portafolio y quiero cotizar edición de video.";
 
 const PROYECTOS = [
